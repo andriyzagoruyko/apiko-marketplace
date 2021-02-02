@@ -1,0 +1,54 @@
+@import '../../varibles';
+
+.header {
+  padding: 18px;
+
+  &Dark {
+    background: linear-gradient(180deg, #090810 0%, #171236 100%);
+
+    svg, button {
+      color:  #FFFFFF;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  font-family: Helvetica;
+  font-size: 12px;
+  line-height: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 39px;
+  }
+}
+
+.loginButton{
+  font-size: 14px;
+  line-height: 31px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0 50px;
+  margin-right: 33px;
+  color: #FFFFFF;
+  background: $color_main_primary;
+}

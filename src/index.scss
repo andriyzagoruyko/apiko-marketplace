@@ -1,0 +1,53 @@
+
+@import 'varibles';
+
+*, div {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica;
+  color: $color_main_text;
+  background: $color_main_background;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: $color_main_primary;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.bg-primary{
+  background: $color_main_primary;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
