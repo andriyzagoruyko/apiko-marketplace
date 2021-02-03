@@ -1,8 +1,12 @@
 
 @import 'varibles';
 
-*, div {
+html {
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -30,18 +34,21 @@ button {
   cursor: pointer;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
   flex: 1 1 auto;
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-}
-
-.bg-primary{
-  background: $color_main_primary;
 }
 
 .fullWidth {

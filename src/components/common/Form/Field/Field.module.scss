@@ -31,6 +31,11 @@
   }
 }
 
+.errored {
+  background: #ffecec;
+  border: 1px solid #e62727;
+}
+
 .input {
   background: transparent;
   border: none;
@@ -50,15 +55,30 @@
   resize:none
 }
 
-.helper {
+.helpers {
+  display: flex;
+  justify-items: space-between;
+  margin-top: 4px;
   font-size: 14px;
   line-height: 16px;
+  min-height: 16px;
   letter-spacing: 0.4px;
-  margin-top: 6px;
-  align-self: flex-end;
+}
 
+.helper {
+  margin-left: auto;
+  flex-shrink: 0;
   &, & a {
-    color: #8C8C8C!important;
+    color: #8C8C8C;
+  }
+}
+
+.error {
+  margin-right: 10px;
+  word-break: break-all;
+  font-size: 12px;
+  &, & a {
+    color: #e62727;
   }
 }
 

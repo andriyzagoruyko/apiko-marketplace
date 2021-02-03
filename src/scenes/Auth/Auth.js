@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import s from './Auth.module.scss';
 import Login from './Login/Login';
-import RefreshPassword from './RefreshPassword/RefreshPassword';
+import Restore from './Restore/Restore';
 import Register from './Register/Register';
 
 function Auth() {
@@ -12,7 +12,7 @@ function Auth() {
       <BrowserRouter>
         <Switch>
           <Route path={routes.login} component={Login} />
-          <Route path={routes.refresh} component={RefreshPassword} />
+          <Route path={routes.refresh} component={Restore} />
           <Route path={routes.register} component={Register} />
         </Switch>
       </BrowserRouter>
