@@ -1,0 +1,53 @@
+@import '../../../../varibles';
+
+.container {
+  width: 100%;
+  margin: 40px auto 0 auto;
+  max-width: $width_inner_container;
+
+  @include for-size($md5) {
+    margin: 15px auto 0 auto;
+  }
+
+  label {
+    margin: 8px;
+    flex-grow: 1.2;
+    flex-basis: 0;
+
+    &:first-child {
+        flex-grow: 3;
+        
+        @include for-size($md5) {
+          flex-basis: 100%;
+        }
+    }
+  }
+
+  form {
+    margin: 0 -8px;
+    flex-wrap: wrap;
+  }
+
+  input {
+    padding: 0px 20px;
+  }
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  align-self: stretch;
+  box-sizing: border-box;
+  padding: 10px 60px;
+  font-size: 14px;
+  line-height: 31px;
+  background: #3E3961;
+  color: #FFFFFF;
+  border-radius: 4px;
+  margin: 8px;
+
+  @include for-size($md5) {
+    padding: 10px 30px;
+  }
+}

@@ -1,22 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import s from './Auth.module.scss';
-import Login from './Login/Login';
-import Restore from './Restore/Restore';
-import Register from './Register/Register';
+import Login from '../Login/Login';
+import Restore from '../Restore/Restore';
+import Register from '../Register/Register';
+import Header from '../../components/Header/Header';
 
 function Auth() {
   return (
-    <div className={s.content}>
-      <BrowserRouter>
+    <>
+      <Header dark={false} />
+      <main className={s.content}>
         <Switch>
-          <Route path={routes.login} component={Login} />
-          <Route path={routes.refresh} component={Restore} />
-          <Route path={routes.register} component={Register} />
+          <Route path={routes.login} component={Login} exact />
+          <Route path={routes.restore} component={Restore} exact />
+          <Route path={routes.register} component={Register} exact />
         </Switch>
-      </BrowserRouter>
-    </div>
+      </main>
+    </>
   );
 }
 

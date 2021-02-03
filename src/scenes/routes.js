@@ -8,15 +8,15 @@ export const routes = {
   auth: '/auth',
   login: '/auth/login',
   register: '/auth/register',
-  refresh: '/auth/refresh',
+  restore: '/auth/restore',
 };
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={routes.home} component={Home} exact />
         <Route path={routes.auth} component={Auth} />
+        <Route path={routes.home} component={Home} />
       </Switch>
     </BrowserRouter>
   );

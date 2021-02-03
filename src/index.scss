@@ -46,9 +46,14 @@ main {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: $width_container;
   margin: 0 auto;
   padding: 0 15px;
+  overflow: hidden;
+
+  @include for-size($md5) {
+    padding: 0 8px;
+  }
 }
 
 .fullWidth {
@@ -57,4 +62,8 @@ main {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
 }

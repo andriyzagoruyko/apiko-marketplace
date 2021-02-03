@@ -1,0 +1,63 @@
+@import '../../../../varibles.scss';
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.217111);
+  border-radius: 4px;
+  max-width: 100%;
+  margin: 20px 0 15px 0;
+
+  form {
+    flex-wrap: wrap;
+  }
+
+  input{
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.35px;
+    
+    &::placeholder {
+      color: #505050;
+    }
+    
+    @include for-size($md5) {
+      width: 100px!important;
+    }
+  }
+}
+
+.item, .selectCategory {
+  margin: 12px;
+
+  @include for-size($md5) {
+    margin: 8px;
+  }
+}
+
+.item {
+  flex: 0 0 calc(50% - 24px);
+
+  @include for-size($md5) {
+    flex: 0 0 calc(50% - 16px);
+  }
+}
+
+.selectCategory {
+  @include for-size($md5) {
+    width: 100%;
+  }
+}
+
+.range {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include for-size($md5) {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+

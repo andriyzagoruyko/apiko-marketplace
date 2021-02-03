@@ -1,22 +1,30 @@
 import React from 'react';
+import {
+  Link as RouterLink,
+  useLocation,
+  matchPath,
+} from 'react-router-dom';
 import s from './Header.module.scss';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { ReactComponent as IconHeart } from '../../assets/img/icons/heart.svg';
+import { routes } from '../../scenes/routes';
+import UserPanel from './components/UserPanel/UserPanel';
+import SearchFrom from './components/SearchForm/SearchForm';
 
-function Header() {
+function Header({ dark = true }) {
+  const location = useLocation();
+
   return (
-    <header className={`${s.header} `}>
+    <header className={`${s.header} ${dark ? s.headerDark : ''}`}>
       <div className={`container ${s.container}`}>
-        <Logo />
         <div className={s.content}>
-          <div className={s.actions}>
-            <button className={`${s.loginButton}`}>sell</button>
-            <button className={s.button}>login</button>
-            <button className={s.button}>
-              <IconHeart />
-            </button>
-          </div>
+          <RouterLink className={s.logo} to={routes.home}>
+            <Logo />
+          </RouterLink>
+          <UserPanel />
         </div>
+        {!matchPath(location.pathname, {
+          path: routes.auth,
+        }) && <SearchFrom />}
       </div>
     </header>
   );
