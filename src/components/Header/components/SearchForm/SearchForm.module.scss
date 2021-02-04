@@ -9,45 +9,37 @@
     margin: 15px auto 0 auto;
   }
 
-  label {
-    margin: 8px;
-    flex-grow: 1.2;
-    flex-basis: 0;
-
-    &:first-child {
-        flex-grow: 3;
-        
-        @include for-size($md5) {
-          flex-basis: 100%;
-        }
-    }
-  }
-
   form {
-    margin: 0 -8px;
+    margin: 0 -4px;
     flex-wrap: wrap;
   }
 
-  input {
-    padding: 0px 20px;
-  }
-}
+  :global{
+    .field {
+      margin: 4px;
+      flex-grow: 1.2;
+      flex-basis: 0;
+  
+      &:first-child {
+          flex-grow: 3;
+          
+          @include for-size($md5) {
+            flex-basis: 100%;
+          }
+      }
 
-.submit {
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  align-self: stretch;
-  box-sizing: border-box;
-  padding: 10px 60px;
-  font-size: 14px;
-  line-height: 31px;
-  background: #3E3961;
-  color: #FFFFFF;
-  border-radius: 4px;
-  margin: 8px;
+      .fieldContainer {
+        padding: 15px 16px;
+      }
+  
+      input {
+        padding: 0px 20px;
+      }
+    }
 
-  @include for-size($md5) {
-    padding: 10px 30px;
-  }
+    .submit {
+      margin: 4px;
+      line-height: 50px;
+    }
+  } 
 }

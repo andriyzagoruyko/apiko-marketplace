@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useEffect } from 'react';
 
 const useTitle = (title) => {

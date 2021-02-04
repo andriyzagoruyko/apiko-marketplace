@@ -7,7 +7,7 @@ function Select({ icon, options = [], placeholder, ...props }) {
   const [field] = useField(props);
 
   return (
-    <div className={s.selectContainer}>
+    <label className={s.selectContainer}>
       {Boolean(icon) && <div className={s.selectIcon}>{icon}</div>}
       <select className={s.select} id={name} {...props} {...field}>
         {Boolean(placeholder) && (
@@ -19,7 +19,7 @@ function Select({ icon, options = [], placeholder, ...props }) {
           </option>
         ))}
       </select>
-    </div>
+    </label>
   );
 }
 

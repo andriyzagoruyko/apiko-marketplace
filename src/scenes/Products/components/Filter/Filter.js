@@ -3,7 +3,7 @@ import s from './Filter.module.scss';
 import Form from '../../../../components/Form/';
 import Field from '../../../../components/Form/Field/Field';
 import Select from '../../../../components/Form/Select/Select';
-import { ReactComponent as IconCategory } from '../../../../assets/img/icons/catergory.svg';
+import { ReactComponent as IconCategory } from '../../../../assets/img/icons/category.svg';
 
 function Filter() {
   const categories = [
@@ -40,7 +40,6 @@ function Filter() {
             <Field
               name="minPrice"
               placeholder="Price from (USD)"
-              margin={false}
               dense
               width={145}
               helper={false}
@@ -50,7 +49,6 @@ function Filter() {
             <Field
               name="maxPrice"
               placeholder="Price to (USD)"
-              margin={false}
               dense
               width={145}
               helper={false}

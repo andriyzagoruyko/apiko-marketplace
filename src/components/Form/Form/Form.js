@@ -1,18 +1,24 @@
 import React from 'react';
 import { Formik, Form as FForm } from 'formik';
 import s from './Form.module.scss';
+import Loader from '../../Loader/Loader';
 
-function Form({ children, fullWidth, horizontal, ...restProps }) {
+function Form({
+  children,
+  horizontal,
+  isLoading = false,
+  enableScreenLock = true,
+  ...restProps
+}) {
   return (
-    <Formik {...restProps}>
-      <FForm
-        className={`${s.form} ${fullWidth ? 'fullWidth' : ''} ${
-          horizontal ? s.row : ''
-        }`}
-      >
-        {children}
-      </FForm>
-    </Formik>
+    <>
+      <Loader show={isLoading} withScreenLock={enableScreenLock} />
+      <Formik {...restProps}>
+        <FForm className={`${s.form} ${horizontal ? s.row : ''}`}>
+          {children}
+        </FForm>
+      </Formik>
+    </>
   );
 }
 

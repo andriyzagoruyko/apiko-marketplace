@@ -15,7 +15,7 @@ function Header({ dark = true }) {
 
   return (
     <header className={`${s.header} ${dark ? s.headerDark : ''}`}>
-      <div className={`container ${s.container}`}>
+      <div className={`${s.container}`}>
         <div className={s.content}>
           <RouterLink className={s.logo} to={routes.home}>
             <Logo />

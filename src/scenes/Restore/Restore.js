@@ -14,7 +14,9 @@ function Auth() {
 
   return (
     <RestoreForm
-      initialValues={{}}
+      initialValues={{
+        email: '',
+      }}
       validationSchema={validationSchema}
     />
   );

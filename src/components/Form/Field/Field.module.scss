@@ -1,3 +1,5 @@
+@import '../../../varibles.scss';
+
 .label {
   display: flex;
   flex-direction: column;
@@ -14,10 +16,6 @@
   }
 }
 
-.margin {
-  margin-top: 16px;
-}
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -32,15 +30,15 @@
   &:focus-within {
     border: 1px solid black;
   }
-}
 
-.dense {
-  padding: 8px 16px;
-}
+  &.hasError {
+    background: #ffecec;
+    border: 1px solid #e62727;
+  }
 
-.errored {
-  background: #ffecec;
-  border: 1px solid #e62727;
+  &.dense {
+    padding: 8px 16px;
+  }
 }
 
 .input {
@@ -55,10 +53,17 @@
     letter-spacing: 0.4px;
     color: rgba(102, 102, 102, 0.466455);
   }
+  
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus {
+    border: 0;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }
 
 .textarea {
-  resize:none
+  resize:none;
 }
 
 .helpers {

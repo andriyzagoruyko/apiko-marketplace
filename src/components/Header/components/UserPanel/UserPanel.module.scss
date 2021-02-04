@@ -3,37 +3,41 @@
 .actions {
   display: flex;
   align-items: center;
+  position: relative;
+
+  li{
+    display: block;
+    &:not(:last-child) {
+      margin-right: 39px;
+  
+      @include for-size($md5) {
+        margin-right: 20px;
+      }
+    }
+  }
 }
 
 .button {
+  display: flex;
+  align-items: center;
   font-family: Helvetica;
   font-size: 12px;
   line-height: 40px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-
-  &:not(:last-child) {
-    margin-right: 39px;
-
-    @include for-size($md5) {
-      margin-right: 20px;
-    }
-  }
 }
 
 .loginButton{
+  display: block;
   font-size: 14px;
   line-height: 31px;
   text-transform: uppercase;
   border-radius: 4px;
   padding: 0 50px;
-  margin-right: 33px;
   color: #FFFFFF!important;
   background: $color_main_primary;
 
   @include for-size($md5) {
-    padding: 0 25px;
+    padding: 0 15px;
   }
 }

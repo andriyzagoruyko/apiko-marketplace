@@ -34,14 +34,23 @@ button {
   cursor: pointer;
 }
 
-.app {
+main {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
   min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
 }
 
-main {
-  flex: 1 1 auto;
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
 }
 
 .container {
@@ -49,15 +58,10 @@ main {
   max-width: $width_container;
   margin: 0 auto;
   padding: 0 15px;
-  overflow: hidden;
 
   @include for-size($md5) {
-    padding: 0 8px;
+    padding: 0 10px;
   }
-}
-
-.fullWidth {
-  width: 100%;
 }
 
 .uppercase {
@@ -66,4 +70,25 @@ main {
 
 .text-center {
   text-align: center;
+}
+
+.small-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 480px;
+  max-width: 100%;
+  margin: 80px auto 0 auto;
+
+  @include for-size($md5) {
+    margin: 30px auto 0 auto;
+  }
+
+  .field {
+    margin-top: 16px;
+  }
+  
+  .submit {
+    margin-top: 20px;
+  }
 }

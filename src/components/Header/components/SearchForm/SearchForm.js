@@ -2,6 +2,7 @@ import React from 'react';
 import s from './SearchForm.module.scss';
 import Form from '../../../Form/';
 import Field from '../../../Form/Field/Field';
+import Submit from '../../../Form/Submit/Submit';
 import { ReactComponent as IconSearch } from '../../../../assets/img/icons/search.svg';
 import { ReactComponent as IconLocation } from '../../../../assets/img/icons/location.svg';
 
@@ -24,9 +25,7 @@ function SearchForm() {
           iconStart
           helper={false}
         />
-        <button type="submit" className={s.submit}>
-          search
-        </button>
+        <Submit type="submit" text="search" dark uppercase />
       </Form>
     </div>
   );

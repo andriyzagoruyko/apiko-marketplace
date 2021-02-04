@@ -21,7 +21,7 @@ function RegisterForm(props) {
             placeholder="Example@gmail.com"
           />
           <FormField
-            name="name"
+            name="fullName"
             type="text"
             label="full name"
             placeholder="Tony Stark"
@@ -33,7 +33,7 @@ function RegisterForm(props) {
       </FormContainer>
       <FormContainer>
         <p className="text-center">
-          I alredy have an account,&nbsp;
+          I already have an account,&nbsp;
           <RouterLink className="uppercase" to={routes.login}>
             Log In
           </RouterLink>

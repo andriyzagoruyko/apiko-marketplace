@@ -5,9 +5,13 @@
   border-radius: 5px;
   line-height: 58px;
   max-width: 100%;
-  margin-top: 24px;
   color: #FFFFFF;
   background: $color_main_primary;
+}
+
+.dark {
+  background: #3E3961;
+  color: #FFFFFF;
 }
 
 .uppercase {

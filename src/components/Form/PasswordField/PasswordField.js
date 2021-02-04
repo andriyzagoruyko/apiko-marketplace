@@ -4,13 +4,13 @@ import { ReactComponent as IconEye } from '../../../assets/img/icons/eye.svg';
 import s from './PasswordField.module.scss';
 
 function PasswordField(props) {
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const eyeButton = (
     <button
-      className={`${s.button} ${visible ? s.active : ''}`}
+      className={`${s.button} ${isVisible ? s.active : ''}`}
       type="button"
-      onClick={() => setVisible(!visible)}
+      onClick={() => setIsVisible(!isVisible)}
     >
       <IconEye />
     </button>
@@ -18,7 +18,7 @@ function PasswordField(props) {
 
   return (
     <FormField
-      type={visible ? 'text' : 'password'}
+      type={isVisible ? 'text' : 'password'}
       icon={eyeButton}
       {...props}
     />

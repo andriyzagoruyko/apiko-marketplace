@@ -8,7 +8,7 @@ function Products({ items = [], children }) {
       {children}
       <div className={s.items}>
         {items.map((item) => (
-          <Item item={item} />
+          <Item key={item.id} item={item} />
         ))}
       </div>
     </div>

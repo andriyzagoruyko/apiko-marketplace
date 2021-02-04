@@ -8,7 +8,6 @@ function Field({
   iconStart = false,
   helper = true,
   dense = false,
-  margin = true,
   width = 0,
   ...props
 }) {
@@ -17,15 +16,12 @@ function Field({
   const hasError = meta.touched && meta.error;
 
   return (
-    <label
-      className={`field ${s.label} ${margin ? s.margin : ''}`}
-      htmlFor={name}
-    >
+    <label className={`field ${s.label} `} htmlFor={name}>
       {Boolean(label) && <span className={s.title}>{label}</span>}
-      <div
-        className={`${s.container} ${hasError ? s.errored : ''} ${
-          dense ? s.dense : ''
-        }`}
+      <span
+        className={`fieldContainer ${s.container} ${
+          hasError ? s.hasError : ''
+        } ${dense ? s.dense : ''}`}
       >
         {!rows ? (
           <input
@@ -52,16 +48,16 @@ function Field({
             {icon}
           </span>
         )}
-      </div>
+      </span>
       {(hasError || Boolean(helper)) && (
-        <div className={s.helpers}>
+        <span className={s.helpers}>
           {hasError ? (
-            <div className={s.error}>{meta.error}</div>
+            <span className={s.error}>{meta.error}</span>
           ) : null}
           {Boolean(helper) && (
             <span className={s.helper}>{helper}</span>
           )}
-        </div>
+        </span>
       )}
     </label>
   );
