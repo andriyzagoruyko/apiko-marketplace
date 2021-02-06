@@ -1,0 +1,108 @@
+@import 'src/varibles.scss';
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 calc(31.4% - 12px);
+  margin-left: 12px;
+
+  @include for-size($md3) {
+    flex: 1 1 100%;
+    margin: 20px 0;
+  }
+}
+
+.seller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  width: 100%;
+  background: linear-gradient(to bottom, $color_main_primary 50px, #FFFFFF 0);
+  padding: 15px;
+  border: 1px solid #DEDEE0;
+  border-radius: 4px;
+
+  :global {
+    .avatar {
+      width: 72px;
+      height: 72px;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.name {
+  font-size: 15px;
+  line-height: 17px;
+  color: #2B2B2B;
+}
+
+.location {
+  font-size: 15px;
+  line-height: 17px;
+  color: rgba(43, 43, 43, 0.499918);
+  margin-top: 4px;
+}
+
+.acitons {
+  align-self: stretch;
+  margin-top: 10px;
+
+  @include for-size($md3) {
+    display: flex;
+    margin: 10px -2.5px 0 -2.5px;
+  }
+}
+
+
+.buttonChat, .buttonSave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 7px 10px;
+  text-transform: uppercase;
+  border: 1px solid #349A89;
+  border-radius: 4px;
+  margin: 10px 0;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 31px;
+  
+  @include for-size($md3) {
+      margin: 10px 5px;
+  }
+
+  @include for-size($md4) {
+    font-size: 12px;
+    line-height: 24px;
+    padding: 5px;
+  }
+}
+
+.buttonChat {
+  color: #FFFFFF;
+  background: #349A89;
+}
+
+.buttonSave {
+  color: #535353;
+  svg {
+    margin-right: 14px;
+    width: 17px;
+    height: 15px;
+
+    @include for-size($md4) {
+      margin-right: 7px;
+    }
+  }
+}

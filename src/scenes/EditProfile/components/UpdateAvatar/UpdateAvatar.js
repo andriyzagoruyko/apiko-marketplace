@@ -1,5 +1,3 @@
-/* eslint-disable no-empty */
-/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { useFormikContext } from 'formik';
 import s from './UpdateAvatar.module.scss';

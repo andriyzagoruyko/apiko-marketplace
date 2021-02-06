@@ -23,7 +23,7 @@ module.exports = {
       {
         devDependencies: true,
         optionalDependencies: false,
-        peerDependencies: false,
+        peerDependencies: true,
       },
     ],
     'function-paren-newline': 0,
