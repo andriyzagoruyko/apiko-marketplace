@@ -16,7 +16,7 @@ export const LatestProductsStore = types
 
 function fetchLatest() {
   return async (flow, store, root) => {
-    const res = await Api.Products.fetchLatest();
+    const res = await Api.Products.getLatest();
 
     res.data.forEach((item) => {
       root.entities.products.add(item.id, item);

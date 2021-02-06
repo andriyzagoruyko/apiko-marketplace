@@ -58,7 +58,10 @@ export const Images = {
 };
 
 export const Products = {
-  fetchLatest() {
+  getLatest() {
     return axios.get('api/products/latest');
+  },
+  getSingle(id) {
+    return axios.get(`/api/products/${id}`);
   },
 };

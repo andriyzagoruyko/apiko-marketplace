@@ -84,3 +84,18 @@ export function createPersist(store) {
 
   return { rehydrate };
 }
+
+export function createCollection(ofModel, asyncModels) {
+  const collection = types
+    .model('CollectionModel', {
+      collection: types.map(ofModel),
+      ...asyncModels,
+    })
+    .actions((store) => ({
+      add(key, value) {
+        store.collection.set(String(key), value);
+      },
+    }));
+
+  return types.optional(collection, {});
+}

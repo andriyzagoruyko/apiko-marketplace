@@ -66,6 +66,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 5px;
 
   h1 {
     font-size: 18.36px;
@@ -76,9 +77,13 @@
   }
 
   time {
-    font-size: 14.04px;
+    font-size: 14px;
     line-height: 16px;
     color: #9D9D9D;
+
+    @include for-size($md4) {
+      font-size: 12px;
+    }
   }
 }
 
@@ -88,7 +93,7 @@
   line-height: 33px;
   font-size: 14.04px;
   line-height: 33px;
-  color: rgba(123, 123, 123, 0.776523);
+  color: rgba(123, 123, 123, 0.77);
 
   svg {
     margin-right: 10px;

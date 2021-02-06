@@ -8,7 +8,7 @@
   li{
     display: block;
     &:not(:last-child) {
-      margin-right: 39px;
+      margin-right: 45px;
   
       @include for-size($md5) {
         margin-right: 20px;

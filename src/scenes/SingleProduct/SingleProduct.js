@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
 import { useStore } from '../../stores/createStore';
 import s from './SingleProduct.module.scss';
@@ -7,9 +8,14 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 function SingleProduct() {
   const params = useParams();
-  const product = useStore((store) =>
-    store.entities.products.collection.get(params.id),
-  );
+  const store = useStore();
+  const product = store.entities.products.collection.get(params.id);
+
+  useEffect(() => {
+    if (!product) {
+      store.entities.products.getSingle.run(params.id);
+    }
+  }, []);
 
   const seller = {
     fullName: 'Test Seller',
@@ -17,7 +23,7 @@ function SingleProduct() {
   };
 
   if (!product) {
-    return <div>Not found</div>;
+    return null;
   }
 
   return (
@@ -28,4 +34,4 @@ function SingleProduct() {
   );
 }
 
-export default SingleProduct;
+export default observer(SingleProduct);
