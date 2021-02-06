@@ -9,32 +9,30 @@ import UpdateAvatar from '../UpdateAvatar/UpdateAvatar';
 function LoginForm(props) {
   const { avatar, fullName } = props.initialValues;
   return (
-    <div className="small-form">
-      <FormContainer>
-        <FormTitle text="Edit profile" />
-        <Form {...props}>
-          <UpdateAvatar
-            name="avatar"
-            hasAvatar={!!avatar}
-            avatar={avatar || fullName}
-          />
-          <FormField
-            name="fullName"
-            label="Full name"
-            type="text"
-            placeholder="Tony Stark"
-          />
-          <FormField
-            name="phone"
-            label="Phone"
-            type="text"
-            placeholder="+ 380 __ __ ___"
-          />
-          <FormField name="location" label="Location" type="text" />
-          <FormSubmit text="Save" />
-        </Form>
-      </FormContainer>
-    </div>
+    <FormContainer>
+      <FormTitle text="Edit profile" />
+      <Form {...props}>
+        <UpdateAvatar
+          name="avatar"
+          hasAvatar={!!avatar}
+          avatar={avatar || fullName}
+        />
+        <FormField
+          name="fullName"
+          label="Full name"
+          type="text"
+          placeholder="Tony Stark"
+        />
+        <FormField
+          name="phone"
+          label="Phone"
+          type="text"
+          placeholder="+ 380 __ __ ___"
+        />
+        <FormField name="location" label="Location" type="text" />
+        <FormSubmit text="Save" />
+      </Form>
+    </FormContainer>
   );
 }
 

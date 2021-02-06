@@ -35,11 +35,9 @@ function LoginForm(props) {
         </Form>
       </FormContainer>
       <FormContainer width={450}>
-        <p className="text-center">
+        <p className="auth-info">
           I have no account,&nbsp;
-          <RouterLink className="uppercase" to={routes.register}>
-            Register Now
-          </RouterLink>
+          <RouterLink to={routes.register}>Register Now</RouterLink>
         </p>
       </FormContainer>
     </>

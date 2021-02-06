@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import useTitle from '../../hooks/useTitle';
 import { useStore } from '../../stores/createStore';
 import EditProfileForm from './components/EditProfileForm/EditProfileForm';
+import s from './EditProfile.module.scss';
 
 const formProps = {
   validationSchema: Yup.object().shape({
@@ -33,11 +34,12 @@ function EditProfile() {
       location,
       avatar,
     });
+
     history.push('/');
   };
 
   return (
-    <>
+    <div className={s.container}>
       <EditProfileForm
         {...formProps}
         initialValues={
@@ -53,7 +55,7 @@ function EditProfile() {
         }
         onSubmit={handleSubmit}
       />
-    </>
+    </div>
   );
 }
 

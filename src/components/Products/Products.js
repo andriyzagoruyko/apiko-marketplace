@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import Item from './Item/Item';
 import s from './Products.module.scss';
 
@@ -15,4 +16,4 @@ function Products({ items = [], children }) {
   );
 }
 
-export default Products;
+export default observer(Products);

@@ -1,9 +1,6 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-axios.defaults.headers.common.Accept = 'application/json';
-axios.defaults.headers.common['Content-Type'] = 'multipart/form-data';
-
 export const Auth = {
   _token: null,
 
@@ -51,5 +48,17 @@ export const User = {
       location,
       avatar,
     });
+  },
+};
+
+export const Images = {
+  upload(image) {
+    return axios.post('/api/upload/images', image);
+  },
+};
+
+export const Products = {
+  fetchLatest() {
+    return axios.get('api/products/latest');
   },
 };

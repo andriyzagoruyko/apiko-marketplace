@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree';
+import { types, getRoot } from 'mobx-state-tree';
 import { UserModel } from './UserModel';
 import Api from '../api';
 
@@ -9,16 +9,16 @@ export const ViewerStore = types
   })
   .actions((store) => ({
     async getViewer(token) {
-      Api.Auth.setToken(token);
       try {
+        Api.Auth.setToken(token);
         store.setLoading(true);
         const res = await Api.User.getAccount();
         store.setViewer(res.data);
       } catch (e) {
-        Api.Auth.setToken(null);
-      } finally {
-        store.setLoading(false);
+        getRoot(store).auth.logout(undefined);
       }
+
+      store.setLoading(false);
     },
     setViewer(user) {
       store.user = user;

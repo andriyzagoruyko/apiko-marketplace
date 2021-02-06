@@ -32,11 +32,9 @@ function RegisterForm(props) {
         </Form>
       </FormContainer>
       <FormContainer>
-        <p className="text-center">
+        <p className="auth-info">
           I already have an account,&nbsp;
-          <RouterLink className="uppercase" to={routes.login}>
-            Log In
-          </RouterLink>
+          <RouterLink to={routes.login}>Log In</RouterLink>
         </p>
       </FormContainer>
     </>

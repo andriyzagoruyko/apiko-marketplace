@@ -1,22 +1,35 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { routes } from '../routes';
 import Login from '../Login/Login';
 import Restore from '../Restore/Restore';
 import Register from '../Register/Register';
 import Header from '../../components/Header/Header';
+import s from './Auth.module.scss';
+import './Auth.scss';
 
 function Auth() {
   return (
     <>
       <Header dark={false} />
-      <div className="small-form">
-        <Switch>
-          <Route path={routes.login} component={Login} exact />
-          <Route path={routes.restore} component={Restore} exact />
-          <Route path={routes.register} component={Register} exact />
-        </Switch>
-      </div>
+      <main className="container">
+        <div className={`${s.auth}`}>
+          <Switch>
+            <Route path={routes.login} component={Login} exact />
+            <Route path={routes.restore} component={Restore} exact />
+            <Route
+              path={routes.register}
+              component={Register}
+              exact
+            />
+            <Route
+              path={routes.auth}
+              render={() => <Redirect to={routes.login} />}
+              exact
+            />
+          </Switch>
+        </div>
+      </main>
     </>
   );
 }

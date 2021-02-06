@@ -6,15 +6,12 @@ import s from './UserPanel.module.scss';
 import { ReactComponent as IconHeart } from '../../../../assets/img/icons/heart.svg';
 import { routes } from '../../../../scenes/routes';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
-import Loader from '../../../Loader/Loader';
 
 function UserPanel() {
   const store = useStore();
 
   return (
     <>
-      {store.viewer.isLoading && <Loader withScreenLock={false} />}
-
       <ul className={s.actions}>
         <li>
           <RouterLink
@@ -26,7 +23,7 @@ function UserPanel() {
         </li>
 
         <li>
-          {!store.viewer.user ? (
+          {!store.auth.isLoggedIn ? (
             <RouterLink to={routes.login} className={s.button}>
               login
             </RouterLink>

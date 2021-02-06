@@ -9,27 +9,34 @@ function UpdateAvatar({ hasAvatar, name, ...props }) {
   const [image, setImage] = useState(null);
   const { avatar } = props;
   const { setFieldValue } = useFormikContext();
+  const isImage = hasAvatar || image !== null;
 
   function handleChange(e) {
-    const reader = new FileReader();
     const file = e.target.files[0];
 
-    reader.onloadend = () => {
-      try {
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const data = new FormData();
+        data.append('image', file);
+        setFieldValue(name, data);
         setImage(reader.result);
-        setFieldValue(name, reader.result);
-      } catch (err) {}
-    };
+      };
 
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
+    }
   }
-
-  const isImage = hasAvatar || image !== null;
 
   return (
     <label className={s.container}>
       <Avatar isImage={isImage} avatar={image || avatar} />
-      <input name={name} type="file" onChange={handleChange} />
+      <input
+        name={name}
+        type="file"
+        accept="image/*"
+        onChange={handleChange}
+      />
       <span role="button" className={s.button}>
         Upgrade Photo
       </span>

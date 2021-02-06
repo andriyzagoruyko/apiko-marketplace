@@ -1,27 +1,34 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
-import { routes } from '../routes';
-import useTitle from '../../hooks/useTitle';
+import { routes, ProtectedRoute } from '../routes';
 import Header from '../../components/Header/Header';
-import Products from '../Products/Products';
+import LatestProducts from '../LatestProducts/LatestProducts';
+import SingleProduct from '../SingleProduct/SingleProduct';
 import EditProfile from '../EditProfile/EditProfile';
 
 function Home() {
-  useTitle('Latest products');
-
   return (
     <>
       <Header />
-      <div className="container">
+      <main className="container">
         <Switch>
-          <Route path={routes.home} component={Products} exact />
+          <Route
+            path={routes.home}
+            component={LatestProducts}
+            exact
+          />
+          <Route
+            path={routes.product}
+            component={SingleProduct}
+            exact
+          />
           <ProtectedRoute
             path={routes.account}
+            redirectTo={routes.login}
             component={EditProfile}
           />
         </Switch>
-      </div>
+      </main>
     </>
   );
 }
