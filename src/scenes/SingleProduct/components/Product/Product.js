@@ -1,15 +1,16 @@
 import React from 'react';
-import placeholder from '../../../../assets/img/placeholder.jpg';
 import { ReactComponent as IconLocation } from '../../../../assets/img/icons/location.svg';
 import s from './Product.module.scss';
+import Image from '../../../../components/Image/Image';
 
 function Product({ product }) {
   return (
     <article className={s.product}>
       <div className={s.image}>
-        <img
-          src={product.photos ? product.photos[0] : { placeholder }}
+        <Image
+          src={product.photos ? product.photos[0] : null}
           alt={product.title}
+          paddingTop="50%"
         />
         <span className={s.price}>${product.price}</span>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useField } from 'formik';
+import './Field.scss';
 import s from './Field.module.scss';
 
 function Field({
@@ -16,8 +17,8 @@ function Field({
   const hasError = meta.touched && meta.error;
 
   return (
-    <label className={`field ${s.label} `} htmlFor={name}>
-      {Boolean(label) && <span className={s.title}>{label}</span>}
+    <label className="field" htmlFor={name}>
+      {Boolean(label) && <span className="fieldTitle">{label}</span>}
       <span
         className={`fieldContainer ${s.container} ${
           hasError ? s.hasError : ''

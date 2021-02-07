@@ -4,9 +4,12 @@ import { useStore } from '../../stores/createStore';
 import Products from '../../components/Products/Products';
 import Filter from './components/Filter/Filter';
 import useTitle from '../../hooks/useTitle';
+import Loader from '../../components/Loader/Loader';
 
 function LatestProducts() {
   const store = useStore();
+  const { items } = store.latestProducts;
+  const { isLoading } = store.latestProducts.fetch;
 
   useTitle('Latest products');
   useEffect(() => {
@@ -15,8 +18,9 @@ function LatestProducts() {
 
   return (
     <>
+      <Loader show={isLoading} />
       <Filter />
-      <Products items={store.latestProducts.items} />
+      <Products items={items} isLoading={isLoading} />
     </>
   );
 }

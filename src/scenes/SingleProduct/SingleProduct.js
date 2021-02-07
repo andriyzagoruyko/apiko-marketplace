@@ -5,15 +5,17 @@ import { useStore } from '../../stores/createStore';
 import s from './SingleProduct.module.scss';
 import Product from './components/Product/Product';
 import Sidebar from './components/Sidebar/Sidebar';
+import Loader from '../../components/Loader/Loader';
 
 function SingleProduct() {
   const params = useParams();
   const store = useStore();
   const product = store.entities.products.collection.get(params.id);
+  const { getSingle } = store.entities.products;
 
   useEffect(() => {
     if (!product) {
-      store.entities.products.getSingle.run(params.id);
+      getSingle.run(params.id);
     }
   }, []);
 
@@ -22,8 +24,8 @@ function SingleProduct() {
     location: 'Jakarta, Indonesia',
   };
 
-  if (!product) {
-    return null;
+  if (!product || getSingle.isLoading) {
+    return <Loader variant="circle" />;
   }
 
   return (

@@ -5,6 +5,8 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation,
+  matchPath,
 } from 'react-router-dom';
 import { useStore } from '../stores/createStore';
 import Home from './Home/Home';
@@ -18,6 +20,7 @@ export const routes = {
   restore: '/auth/restore',
   account: '/account',
   product: '/product/:id',
+  addProduct: '/sell',
 };
 
 const ProtectedRoute = observer(
@@ -43,6 +46,15 @@ const ProtectedRoute = observer(
     );
   },
 );
+
+export const DisableOnRoutes = ({ paths = [], children }) => {
+  const location = useLocation();
+  const isMatch =
+    paths.filter((path) => matchPath(location.pathname, { path }))
+      .length > 0;
+
+  return !isMatch ? children : null;
+};
 
 function Router() {
   return (

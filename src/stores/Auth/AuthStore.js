@@ -53,17 +53,13 @@ function saveAccountFlow({
   avatar = null,
 }) {
   return async (flow) => {
-    if (typeof avatar === 'object') {
-      const { data } = await Api.Images.upload(avatar);
-      avatar = data;
-    }
-
     const res = await Api.User.save({
       fullName,
       phone,
       location,
       avatar,
     });
+
     getRoot(flow).viewer.setViewer(res.data);
   };
 }

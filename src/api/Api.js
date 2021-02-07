@@ -37,23 +37,37 @@ export const Auth = {
   },
 };
 
+export const Images = {
+  upload(images) {
+    return Promise.all(
+      images.map(async (image) => {
+        if (image instanceof File) {
+          const formData = new FormData();
+          formData.append('image', image);
+          const res = await axios.post(
+            '/api/upload/images',
+            formData,
+          );
+          return res.data;
+        }
+        return image;
+      }),
+    );
+  },
+};
+
 export const User = {
   getAccount() {
     return axios.get('/api/account');
   },
-  save({ fullName, phone, location, avatar }) {
+  async save({ fullName, phone, location, avatar }) {
+    const images = await Images.upload([avatar]);
     return axios.put('/api/account', {
       fullName,
       phone,
       location,
-      avatar,
+      avatar: images[0],
     });
-  },
-};
-
-export const Images = {
-  upload(image) {
-    return axios.post('/api/upload/images', image);
   },
 };
 
@@ -63,5 +77,14 @@ export const Products = {
   },
   getSingle(id) {
     return axios.get(`/api/products/${id}`);
+  },
+  async add({ title, description, photos = [], location, price }) {
+    return axios.post('api/products', {
+      title,
+      description,
+      photos: await Images.upload(photos),
+      location,
+      price,
+    });
   },
 };

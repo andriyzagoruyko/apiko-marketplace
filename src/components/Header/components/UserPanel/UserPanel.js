@@ -15,7 +15,7 @@ function UserPanel() {
       <ul className={s.actions}>
         <li>
           <RouterLink
-            to={routes.login}
+            to={routes.addProduct}
             className={`${s.loginButton}`}
           >
             sell

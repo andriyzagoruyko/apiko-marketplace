@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import LatestProducts from '../LatestProducts/LatestProducts';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import EditProfile from '../EditProfile/EditProfile';
+import AddProduct from '../AddProduct/AddProduct';
 
 function Home() {
   return (
@@ -26,6 +27,11 @@ function Home() {
             path={routes.account}
             redirectTo={routes.login}
             component={EditProfile}
+          />
+          <ProtectedRoute
+            path={routes.addProduct}
+            redirectTo={routes.login}
+            component={AddProduct}
           />
         </Switch>
       </main>

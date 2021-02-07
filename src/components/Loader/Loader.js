@@ -1,7 +1,11 @@
 import React from 'react';
 import s from './Loader.module.scss';
 
-function Loader({ show = true, withScreenLock = true }) {
+function Loader({
+  variant = 'line',
+  show = true,
+  withScreenLock = false,
+}) {
   if (!show) {
     return null;
   }
@@ -9,18 +13,29 @@ function Loader({ show = true, withScreenLock = true }) {
   return (
     <>
       {withScreenLock && <div className={s.screenLock} />}
-      <div className={s.loading}>
-        <div className={s.loadingWrapper}>
-          <div className={s.loadingLine}>
-            <div
-              className={`${s.loadingLineInner} ${s.loadingLineInner1}`}
-            />
-            <div
-              className={`${s.loadingLineInner} ${s.loadingLineInner2}`}
-            />
+      {variant === 'line' ? (
+        <div className={s.loading}>
+          <div className={s.loadingWrapper}>
+            <div className={s.loadingLine}>
+              <div
+                className={`${s.loadingLineInner} ${s.loadingLineInner1}`}
+              />
+              <div
+                className={`${s.loadingLineInner} ${s.loadingLineInner2}`}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={s.loadingRing}>
+          <div className={s.loadingRingWrapper}>
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+      )}
     </>
   );
 }

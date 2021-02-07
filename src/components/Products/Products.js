@@ -3,13 +3,19 @@ import { observer } from 'mobx-react';
 import Item from './Item/Item';
 import s from './Products.module.scss';
 
-function Products({ items = [], children }) {
+function Products({
+  isLoading = false,
+  placeholderNum = 12,
+  items = [],
+}) {
   return (
     <div className={s.container}>
-      {children}
       <div className={s.items}>
-        {items.map((item) => (
-          <Item key={item.id} item={item} />
+        {(!items.length && isLoading
+          ? Array.from(Array(placeholderNum), (v, i) => ({ id: i }))
+          : items
+        ).map((item) => (
+          <Item key={item.id} item={item} ready={!isLoading} />
         ))}
       </div>
     </div>

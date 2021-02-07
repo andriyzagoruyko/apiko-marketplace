@@ -1,29 +1,13 @@
 @import 'src/varibles.scss';
 
 .label {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
 
-  .title {
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    color: #303030;
-    margin-bottom: 6px;
-  }
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   position: relative;
-  background: #F9FAFB;
-  border: 1px solid #DEDEE0;
-  box-sizing: border-box;
-  border-radius: 5px;
   width: 100%;
   padding: 18px 16px;
   

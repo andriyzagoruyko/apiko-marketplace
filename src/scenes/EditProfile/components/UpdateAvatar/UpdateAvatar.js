@@ -1,44 +1,32 @@
-import React, { useState } from 'react';
-import { useFormikContext } from 'formik';
+import React from 'react';
 import s from './UpdateAvatar.module.scss';
 import Avatar from '../../../../components/Avatar/Avatar';
+import FormUpload from '../../../../components/Form/Upload/Upload';
 
 function UpdateAvatar({ hasAvatar, name, ...props }) {
-  const [image, setImage] = useState(null);
   const { avatar } = props;
-  const { setFieldValue } = useFormikContext();
-  const isImage = hasAvatar || image !== null;
 
-  function handleChange(e) {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const data = new FormData();
-        data.append('image', file);
-        setFieldValue(name, data);
-        setImage(reader.result);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  }
-
-  return (
-    <label className={s.container}>
-      <Avatar isImage={isImage} avatar={image || avatar} />
-      <input
-        name={name}
-        type="file"
-        accept="image/*"
-        onChange={handleChange}
+  const renderPreview = (images) => (
+    <>
+      <Avatar
+        isImage={!!images.length || !!avatar}
+        avatar={images.length ? images[0] : avatar}
       />
       <span role="button" className={s.button}>
         Upgrade Photo
       </span>
-    </label>
+    </>
+  );
+
+  return (
+    <div className={s.container}>
+      <FormUpload
+        accept="image/*"
+        maxFiles={1}
+        name={name}
+        renderPreview={renderPreview}
+      />
+    </div>
   );
 }
 

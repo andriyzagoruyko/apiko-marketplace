@@ -3,12 +3,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  cursor: pointer;
+
+  label {
+    cursor: pointer;
+  }
 
   :global .avatar {
     width: 100px;
     height: 100px;
+    align-self: center;
 
     span {
       font-size: 28px;
@@ -30,6 +33,7 @@
     color: #349A89;
     padding: 4px 7px;
     transform: translateY(-50%);
+    align-self: center;
   }
 
   input {

@@ -48,11 +48,13 @@ export function asyncModel(thunk, auto = true) {
       async _auto(promise) {
         try {
           store.start();
-          await promise;
+          const res = await promise;
           store.success();
+          return res;
         } catch (err) {
           store.error(err);
         }
+        return undefined;
       },
     }));
 
