@@ -16,7 +16,7 @@ export const AuthStore = types
     logout() {
       Api.Auth.logout();
       store.setIsLoggedIn(false);
-      getRoot(store).viewer.setViewer(undefined);
+      getRoot(store).viewer.setViewer();
     },
   }));
 
@@ -52,7 +52,7 @@ function saveAccountFlow({
   location,
   avatar = null,
 }) {
-  return async (flow) => {
+  return async (flow, store, Root) => {
     const res = await Api.User.save({
       fullName,
       phone,
@@ -60,6 +60,7 @@ function saveAccountFlow({
       avatar,
     });
 
-    getRoot(flow).viewer.setViewer(res.data);
+    Root.viewer.setViewer(res.data);
+    Root.entities.users.add(res.data.id, res.data);
   };
 }

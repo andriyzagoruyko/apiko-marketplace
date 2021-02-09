@@ -30,7 +30,12 @@ function AddProductForm(props) {
           rows={5}
           placeholder="For example: Iron man suit"
         />
-        <FormUpload name="photos" label="photos" accept="image/*" />
+        <FormUpload
+          name="photos"
+          label="photos"
+          accept="image/*"
+          maxFiles={6}
+        />
         <FormField
           name="price"
           label="price"

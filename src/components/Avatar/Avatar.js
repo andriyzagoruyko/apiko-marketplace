@@ -1,13 +1,13 @@
 import React from 'react';
 import s from './Avatar.module.scss';
 
-function Avatar({ isImage = true, avatar = '' }) {
+function Avatar({ avatar = '', fullName = '' }) {
   return (
     <span className={`avatar ${s.avatar}`}>
-      {isImage ? (
+      {avatar ? (
         <img src={avatar} alt="avatar" />
       ) : (
-        <span>{avatar.split(' ').map((l) => l[0])}</span>
+        <span>{fullName.split(' ').map((l) => l[0])}</span>
       )}
     </span>
   );

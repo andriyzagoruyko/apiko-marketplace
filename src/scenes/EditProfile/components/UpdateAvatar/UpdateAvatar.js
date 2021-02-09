@@ -4,13 +4,13 @@ import Avatar from '../../../../components/Avatar/Avatar';
 import FormUpload from '../../../../components/Form/Upload/Upload';
 
 function UpdateAvatar({ hasAvatar, name, ...props }) {
-  const { avatar } = props;
+  const { avatar, fullName } = props;
 
   const renderPreview = (images) => (
     <>
       <Avatar
-        isImage={!!images.length || !!avatar}
         avatar={images.length ? images[0] : avatar}
+        fullName={fullName}
       />
       <span role="button" className={s.button}>
         Upgrade Photo

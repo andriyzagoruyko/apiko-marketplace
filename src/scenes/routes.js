@@ -21,6 +21,7 @@ export const routes = {
   account: '/account',
   product: '/product/:id',
   addProduct: '/sell',
+  profile: '/user/:id',
 };
 
 const ProtectedRoute = observer(

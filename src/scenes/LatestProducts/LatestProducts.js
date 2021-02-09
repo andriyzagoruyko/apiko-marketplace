@@ -17,11 +17,10 @@ function LatestProducts() {
   }, []);
 
   return (
-    <>
-      <Loader show={isLoading} />
+    <Loader show={isLoading}>
       <Filter />
       <Products items={items} isLoading={isLoading} />
-    </>
+    </Loader>
   );
 }
 

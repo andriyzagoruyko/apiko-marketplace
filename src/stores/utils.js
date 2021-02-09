@@ -4,7 +4,11 @@ import {
   types,
   getParent,
   getRoot,
+  isStateTreeNode,
+  getIdentifier,
+  resolveIdentifier,
 } from 'mobx-state-tree';
+import { normalize } from 'normalizr';
 
 export function asyncModel(thunk, auto = true) {
   const model = types
@@ -45,6 +49,11 @@ export function asyncModel(thunk, auto = true) {
 
         return promise;
       },
+      merge(data, schema) {
+        const { entities, result } = normalize(data, schema);
+        getRoot(store).entities.merge(entities);
+        return result;
+      },
       async _auto(promise) {
         try {
           store.start();
@@ -71,6 +80,7 @@ export function createPersist(store) {
         },
         viewer: {
           user: snapshot.viewer.user,
+          userModel: snapshot.viewer.userModel,
         },
       }),
     );
@@ -93,11 +103,34 @@ export function createCollection(ofModel, asyncModels) {
       collection: types.map(ofModel),
       ...asyncModels,
     })
+    .views((store) => ({
+      get(key) {
+        return store.collection.get(String(key));
+      },
+      getArray(array) {
+        return array.map((key) => store.collection.get(String(key)));
+      },
+    }))
     .actions((store) => ({
       add(key, value) {
-        store.collection.set(String(key), value);
+        return store.collection.set(String(key), value);
       },
     }));
 
   return types.optional(collection, {});
+}
+
+export function safeReference(T) {
+  return types.reference(T, {
+    get(identifier, parent) {
+      if (isStateTreeNode(identifier)) {
+        identifier = getIdentifier(identifier);
+      }
+
+      return resolveIdentifier(T, parent, identifier);
+    },
+    set(value) {
+      return value;
+    },
+  });
 }

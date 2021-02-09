@@ -17,8 +17,6 @@ export const RootStore = types
 
       if (token) {
         store.viewer.getViewer(token);
-      } else {
-        store.auth.logout();
       }
     },
   }));

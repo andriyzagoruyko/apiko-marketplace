@@ -6,6 +6,7 @@ import LatestProducts from '../LatestProducts/LatestProducts';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import EditProfile from '../EditProfile/EditProfile';
 import AddProduct from '../AddProduct/AddProduct';
+import UserProfile from '../UserProfile/UserProfile';
 
 function Home() {
   return (
@@ -21,6 +22,11 @@ function Home() {
           <Route
             path={routes.product}
             component={SingleProduct}
+            exact
+          />
+          <Route
+            path={routes.profile}
+            component={UserProfile}
             exact
           />
           <ProtectedRoute

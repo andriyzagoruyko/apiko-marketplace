@@ -4,38 +4,41 @@ import s from './Loader.module.scss';
 function Loader({
   variant = 'line',
   show = true,
+  // eslint-disable-next-line no-unused-vars
   withScreenLock = false,
+  children,
 }) {
-  if (!show) {
-    return null;
-  }
-
   return (
     <>
-      {withScreenLock && <div className={s.screenLock} />}
-      {variant === 'line' ? (
-        <div className={s.loading}>
-          <div className={s.loadingWrapper}>
-            <div className={s.loadingLine}>
-              <div
-                className={`${s.loadingLineInner} ${s.loadingLineInner1}`}
-              />
-              <div
-                className={`${s.loadingLineInner} ${s.loadingLineInner2}`}
-              />
+      {show && (
+        <>
+          {withScreenLock && <div className={s.screenLock} />}
+          {variant === 'line' ? (
+            <div className={s.loading}>
+              <div className={s.loadingWrapper}>
+                <div className={s.loadingLine}>
+                  <div
+                    className={`${s.loadingLineInner} ${s.loadingLineInner1}`}
+                  />
+                  <div
+                    className={`${s.loadingLineInner} ${s.loadingLineInner2}`}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        <div className={s.loadingRing}>
-          <div className={s.loadingRingWrapper}>
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        </div>
+          ) : (
+            <div className={s.loadingRing}>
+              <div className={s.loadingRingWrapper}>
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            </div>
+          )}
+        </>
       )}
+      {children}
     </>
   );
 }

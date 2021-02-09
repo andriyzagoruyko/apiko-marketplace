@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { generatePath } from 'react-router';
 import { observer } from 'mobx-react';
 import s from './ProfileMenu.module.scss';
 import { useStore } from '../../../../stores/createStore';
@@ -40,31 +41,29 @@ function ProfileMenu() {
     };
   }, []);
 
-  const avatar = (
-    <Avatar
-      isImage={!!user.avatar}
-      avatar={user.avatar || user.fullName}
-    />
-  );
-
   return (
     <div className={s.container} ref={ref}>
       <button
         className={s.button}
         onClick={() => setIsActive(!isActive)}
       >
-        {avatar}
+        <Avatar {...user} />
       </button>
       {isActive && (
         <div className={s.menu}>
           <div className={s.user}>
-            <div className={s.avatar}>{avatar}</div>
+            <div className={s.avatar}>
+              <Avatar {...user} />
+            </div>
             <div className={s.info}>
               <span className={s.name}>{user.fullName}</span>
               <span className={s.email}>{user.email}</span>
-              <a href="/" className={s.link}>
+              <RouterLink
+                to={generatePath(routes.profile, { id: user.id })}
+                className={s.link}
+              >
                 Profile
-              </a>
+              </RouterLink>
             </div>
           </div>
           <ul className={s.actions}>

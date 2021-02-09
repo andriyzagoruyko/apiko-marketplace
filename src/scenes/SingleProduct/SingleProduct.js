@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
-import { useStore } from '../../stores/createStore';
+import { useProductsCollection } from '../../stores/Products/ProductsCollection';
+import { useUsersCollection } from '../../stores/Users/UsersCollection';
 import s from './SingleProduct.module.scss';
 import Product from './components/Product/Product';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -9,29 +10,25 @@ import Loader from '../../components/Loader/Loader';
 
 function SingleProduct() {
   const params = useParams();
-  const store = useStore();
-  const product = store.entities.products.collection.get(params.id);
-  const { getSingle } = store.entities.products;
+
+  const products = useProductsCollection();
+  const users = useUsersCollection();
+
+  const product = products.get(params.id);
+  const owner = product && users.get(product.ownerId);
 
   useEffect(() => {
-    if (!product) {
-      getSingle.run(params.id);
+    if (!product || !owner) {
+      products.getSingle.run(params.id);
     }
   }, []);
 
-  const seller = {
-    fullName: 'Test Seller',
-    location: 'Jakarta, Indonesia',
-  };
-
-  if (!product || getSingle.isLoading) {
-    return <Loader variant="circle" />;
-  }
-
   return (
     <div className={s.container}>
-      <Product product={product} />
-      <Sidebar seller={seller} />
+      <Loader show={products.getSingle.isLoading}>
+        <Product product={product} />
+        <Sidebar seller={owner} />
+      </Loader>
     </div>
   );
 }

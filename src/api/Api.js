@@ -60,6 +60,9 @@ export const User = {
   getAccount() {
     return axios.get('/api/account');
   },
+  getUser(id) {
+    return axios.get(`/api/users/${id}`);
+  },
   async save({ fullName, phone, location, avatar }) {
     const images = await Images.upload([avatar]);
     return axios.put('/api/account', {
@@ -69,13 +72,16 @@ export const User = {
       avatar: images[0],
     });
   },
+  getProducts(id) {
+    return axios.get(`/api/users/${id}/products`);
+  },
 };
 
 export const Products = {
   getLatest() {
     return axios.get('api/products/latest');
   },
-  getSingle(id) {
+  getById(id) {
     return axios.get(`/api/products/${id}`);
   },
   async add({ title, description, photos = [], location, price }) {
