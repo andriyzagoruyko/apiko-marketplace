@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
+const queryString = require('query-string');
+
 export const Auth = {
   _token: null,
 
@@ -78,6 +80,19 @@ export const User = {
 };
 
 export const Products = {
+  async add({ title, description, photos = [], location, price }) {
+    return axios.post('api/products', {
+      title,
+      description,
+      photos: await Images.upload(photos),
+      location,
+      price,
+    });
+  },
+  getSearch({ keyword, location }) {
+    const query = queryString.stringify({ keyword, location });
+    return axios.get(`api/products/search?${query}`);
+  },
   getLatest() {
     return axios.get('api/products/latest');
   },
@@ -88,15 +103,6 @@ export const Products = {
     return axios.get(
       `/api/products/ids?${ids.map((id) => `id=${id}`).join('&')}`,
     );
-  },
-  async add({ title, description, photos = [], location, price }) {
-    return axios.post('api/products', {
-      title,
-      description,
-      photos: await Images.upload(photos),
-      location,
-      price,
-    });
   },
   getSaved() {
     return axios.get('/api/products/saved');

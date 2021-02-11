@@ -10,6 +10,7 @@ function Field({
   helper = true,
   dense = false,
   width = 0,
+  disableHelper = false,
   ...props
 }) {
   const { name, rows } = props;
@@ -50,7 +51,7 @@ function Field({
           </span>
         )}
       </span>
-      {(hasError || Boolean(helper)) && (
+      {!disableHelper && (hasError || Boolean(helper)) && (
         <span className={s.helpers}>
           {hasError ? (
             <span className={s.error}>{meta.error}</span>

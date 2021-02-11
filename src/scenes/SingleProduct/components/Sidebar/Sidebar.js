@@ -7,6 +7,8 @@ import { useStore } from '../../../../stores/createStore';
 
 function Sidebar({ seller, product }) {
   const { viewer } = useStore();
+  const disableButtons =
+    !product || viewer?.user?.id === product.ownerId;
 
   return (
     <aside className={s.sidebar}>
@@ -14,25 +16,23 @@ function Sidebar({ seller, product }) {
         <UserInfo user={seller} withLink />
       </div>
 
-      {product && viewer?.user?.id !== product.ownerId && (
-        <div className={s.actions}>
-          <button disabled={!seller} className={s.buttonChat}>
-            chat with seller
-          </button>
-          <button
-            disabled={!seller || viewer.savedProducts.isLoading}
-            className={`${s.buttonSave} ${
-              product.saved ? s.active : ''
-            }`}
-            onClick={() => viewer.savedProducts.toggleItem(product)}
-          >
-            <IconHeart />{' '}
-            {!product.saved
-              ? 'add to favorite'
-              : 'remove from favorite'}
-          </button>
-        </div>
-      )}
+      <div className={s.actions}>
+        <button disabled={disableButtons} className={s.buttonChat}>
+          chat with seller
+        </button>
+        <button
+          disabled={disableButtons || viewer.savedProducts.isLoading}
+          className={`${s.buttonSave} ${
+            product?.saved ? s.active : ''
+          }`}
+          onClick={() => viewer.savedProducts.toggleItem(product)}
+        >
+          <IconHeart />{' '}
+          {!product?.saved
+            ? 'add to favorite'
+            : 'remove from favorite'}
+        </button>
+      </div>
     </aside>
   );
 }

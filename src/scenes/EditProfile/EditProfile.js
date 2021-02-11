@@ -17,7 +17,7 @@ const formProps = {
 };
 
 function EditProfile() {
-  useTitle('EditProfile');
+  useTitle('Edit account');
 
   const store = useStore();
   const history = useHistory();

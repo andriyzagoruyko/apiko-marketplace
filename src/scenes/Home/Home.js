@@ -9,6 +9,7 @@ import EditProfile from '../EditProfile/EditProfile';
 import AddProduct from '../AddProduct/AddProduct';
 import UserProfile from '../UserProfile/UserProfile';
 import SavedProducts from '../SavedProducts/SavedProducts';
+import SearchProducts from '../SearchProducts/SearchProducts';
 
 function Home() {
   return (
@@ -19,6 +20,11 @@ function Home() {
           <Route
             path={routes.home}
             component={LatestProducts}
+            exact
+          />
+          <Route
+            path={routes.search}
+            component={SearchProducts}
             exact
           />
           <Route

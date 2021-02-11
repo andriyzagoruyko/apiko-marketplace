@@ -7,6 +7,7 @@ import s from './SingleProduct.module.scss';
 import Product from './components/Product/Product';
 import Sidebar from './components/Sidebar/Sidebar';
 import Loader from '../../components/Loader/Loader';
+import useTitle from '../../hooks/useTitle';
 
 function SingleProduct() {
   const params = useParams();
@@ -16,6 +17,7 @@ function SingleProduct() {
   const product = products.get(params.id);
   const owner = product && users.get(product.ownerId);
 
+  useTitle(`Product: ${product ? product.title : ''}`);
   useEffect(() => {
     if (!product || !owner) {
       products.getSingle.run(params.id);

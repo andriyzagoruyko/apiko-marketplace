@@ -30,9 +30,9 @@ function Item({ item, ready = false }) {
   return (
     <div className={s.item}>
       <ReactPlaceholder
+        showLoadingAnimation
         ready={ready}
         customPlaceholder={itemPlaceholder}
-        showLoadingAnimation
       >
         {item && (
           <>
@@ -41,7 +41,7 @@ function Item({ item, ready = false }) {
             >
               <Image
                 src={
-                  item.photos && item.photos.length > 0
+                  item.photos && item.photos.length
                     ? item.photos[0]
                     : null
                 }

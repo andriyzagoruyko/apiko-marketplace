@@ -18,10 +18,15 @@ function Info({ user }) {
       </div>
 
       <div className="user-info__content">
-        <TextRow color="#E0E0E0" style={{ margin: 0, height: 17 }} />
         <TextRow
+          className="user-info__name"
           color="#E0E0E0"
-          style={{ margin: '4px 0 0 0', height: 17 }}
+          style={{ margin: 0 }}
+        />
+        <TextRow
+          className="user-info__location"
+          color="#E0E0E0"
+          style={{ margin: '4px 0 0 0' }}
         />
       </div>
     </>

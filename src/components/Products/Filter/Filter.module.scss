@@ -24,7 +24,11 @@
     }
     
     @include for-size($md5) {
-      width: 100px!important;
+      width: 110px!important;
+    }
+
+    @include for-size($md6) {
+      width: 80px!important;
     }
   }
 }

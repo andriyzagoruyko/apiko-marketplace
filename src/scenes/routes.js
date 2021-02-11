@@ -23,6 +23,7 @@ export const routes = {
   addProduct: '/sell',
   profile: '/user/:id',
   saved: '/saved',
+  search: '/search',
 };
 
 export const ProtectedRoute = observer(

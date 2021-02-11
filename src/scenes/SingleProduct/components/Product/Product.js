@@ -39,7 +39,11 @@ function Product({ product }) {
         <article className={s.product}>
           <div className={s.image}>
             <Image
-              src={product.photos ? product.photos[0] : null}
+              src={
+                product.photos && product.photos.length
+                  ? product.photos[0]
+                  : null
+              }
               alt={product.title}
               paddingTop="50%"
             />

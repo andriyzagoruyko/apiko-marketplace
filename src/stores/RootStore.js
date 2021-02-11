@@ -2,6 +2,7 @@ import { types } from 'mobx-state-tree';
 import { AuthStore } from './Auth/AuthStore';
 import { ViewerStore } from './ViewerStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
+import { SearchProductsStore } from './Products/SearchProductsStore';
 import { EntitiesStore } from './EntitiesStore';
 
 export const RootStore = types
@@ -9,6 +10,7 @@ export const RootStore = types
     auth: types.optional(AuthStore, {}),
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
+    searchProducts: types.optional(SearchProductsStore, {}),
     entities: types.optional(EntitiesStore, {}),
   })
   .actions((store) => ({

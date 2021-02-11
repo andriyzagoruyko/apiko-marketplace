@@ -3,11 +3,15 @@ import { observer } from 'mobx-react';
 import Item from './Item/Item';
 import s from './Products.module.scss';
 
-function Products({ isLoading, placeholderNum = 12, items = [] }) {
+function Products({
+  placeholderNum = 12,
+  isLoading = false,
+  items = [],
+}) {
   return (
     <div className={s.container}>
       <div className={s.items}>
-        {!items.length && isLoading
+        {!items.length || isLoading
           ? Array.from(Array(placeholderNum)).map((_, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <Item key={index} />

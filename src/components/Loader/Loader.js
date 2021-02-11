@@ -4,7 +4,6 @@ import s from './Loader.module.scss';
 function Loader({
   variant = 'line',
   show = true,
-  // eslint-disable-next-line no-unused-vars
   withScreenLock = false,
   children,
 }) {
