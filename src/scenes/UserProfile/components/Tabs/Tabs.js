@@ -1,7 +1,7 @@
 import React from 'react';
-import s from './UserInfo.module.scss';
+import s from './Tabs.module.scss';
 
-function UserInfo({ count = 0 }) {
+function Tabs({ count = 0 }) {
   return (
     <div className={s.info}>
       <div className={`${s.item} ${s.feedback}`}>
@@ -20,4 +20,4 @@ function UserInfo({ count = 0 }) {
   );
 }
 
-export default UserInfo;
+export default Tabs;

@@ -9,11 +9,9 @@ import { useStore } from '../../stores/createStore';
 function SavedProducts() {
   const { viewer } = useStore();
   const { savedProducts } = viewer;
+  const isLoading = viewer.isLoading || savedProducts.fetch.isLoading;
 
   useTitle('Saved products');
-
-  const isLoading = viewer.isLoading || savedProducts.fetch.isLoading;
-  const { items } = savedProducts;
 
   return (
     <>
@@ -24,7 +22,7 @@ function SavedProducts() {
           </h1>
           {savedProducts.count > 0 ? (
             <Products
-              items={items}
+              items={savedProducts.items}
               isLoading={isLoading}
               placeholderNum={savedProducts.count}
             />

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './UpdateAvatar.module.scss';
-import Avatar from '../../../../components/Avatar/Avatar';
+import Avatar from '../../../../components/User/Avatar/Avatar';
 import FormUpload from '../../../../components/Form/Upload/Upload';
 
 function UpdateAvatar({ hasAvatar, name, ...props }) {

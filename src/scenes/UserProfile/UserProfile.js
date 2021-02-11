@@ -6,8 +6,8 @@ import useTitle from '../../hooks/useTitle';
 import Loader from '../../components/Loader/Loader';
 import { useUsersCollection } from '../../stores/Users/UsersCollection';
 import s from './UserProfile.module.scss';
-import Avatar from '../../components/Avatar/Avatar';
-import UserInfo from './components/UserInfo/UserInfo';
+import Tabs from './components/Tabs/Tabs';
+import UserInfo from '../../components/User/Info/Info';
 
 function UserProfile() {
   const { id } = useParams();
@@ -34,16 +34,8 @@ function UserProfile() {
     <>
       <Loader show={isLoading}>
         <div className={s.container}>
-          {user && (
-            <div className={s.user}>
-              <Avatar {...user} />
-              <div className={s.data}>
-                <span className={s.name}>{user.fullName}</span>
-                <span className={s.location}>{user.location}</span>
-              </div>
-            </div>
-          )}
-          <UserInfo count={user && user.ownProducts.count} />
+          <UserInfo user={user} />
+          <Tabs count={user && user.ownProducts.count} />
           <Products
             items={user && user.ownProducts.items}
             isLoading={isLoading}

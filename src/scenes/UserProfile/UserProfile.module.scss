@@ -15,45 +15,41 @@
   @include for-size($md4) {
     padding: 15px 10px;
   }
-}
 
-.user {
   :global {
-    .avatar {
-      width: 100px;
-      height: 100px;
-
-      img {
-        border-radius: 50%;
-        border: 3px solid #349A89;
+    .user-info {
+      .avatar {
+        width: 100px;
+        height: 100px;
+  
+        img {
+          border-radius: 50%;
+          border: 3px solid #349A89;
+        }
+  
+        span {
+          font-size: 24px;
+          font-weight: bold;
+        }
       }
 
-      span {
-        font-size: 24px;
-        font-weight: bold;
+      &__content {
+        margin-top: 15px;
+      }
+
+      &__name {
+        font-size: 20px;
+        line-height: 24px;
+        color: #141414;
+      }
+
+      &__location {
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 15px;
+        color: #9099A7;
+        margin-top: 4px;
       }
     }
   }
-}
-
-.data {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-}
-
-.name {
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-  color: #141414;
-}
-
-.location {
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 15px;
-  text-align: center;
-  color: #9099A7;
-  margin-top: 4px;
 }

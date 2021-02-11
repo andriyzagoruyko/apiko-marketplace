@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import s from './ProfileMenu.module.scss';
 import { useStore } from '../../../../stores/createStore';
 import { routes } from '../../../../scenes/routes';
-import Avatar from '../../../Avatar/Avatar';
+import Avatar from '../../../User/Avatar/Avatar';
 
 function ProfileMenu() {
   const ref = useRef();
