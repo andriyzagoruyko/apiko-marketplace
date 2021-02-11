@@ -3,12 +3,12 @@ import { observer } from 'mobx-react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useStore } from '../../../../stores/createStore';
 import s from './UserPanel.module.scss';
-import { ReactComponent as IconHeart } from '../../../../assets/img/icons/heart.svg';
+import { ReactComponent as IconHeart } from '../../../../assets/img/icons/heart-filled.svg';
 import { routes } from '../../../../scenes/routes';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 function UserPanel() {
-  const store = useStore();
+  const { auth, viewer } = useStore();
 
   return (
     <>
@@ -16,14 +16,14 @@ function UserPanel() {
         <li>
           <RouterLink
             to={routes.addProduct}
-            className={`${s.loginButton}`}
+            className={`${s.buttonLogin}`}
           >
             sell
           </RouterLink>
         </li>
 
         <li>
-          {!store.auth.isLoggedIn ? (
+          {!auth.isLoggedIn ? (
             <RouterLink to={routes.login} className={s.button}>
               login
             </RouterLink>
@@ -33,7 +33,12 @@ function UserPanel() {
         </li>
 
         <li>
-          <RouterLink to={routes.home} className={s.button}>
+          <RouterLink
+            to={routes.saved}
+            className={`${s.button} ${s.buttonSaved} ${
+              viewer.savedProducts.count ? s.active : ''
+            }`}
+          >
             <IconHeart />
           </RouterLink>
         </li>

@@ -22,9 +22,10 @@ export const routes = {
   product: '/product/:id',
   addProduct: '/sell',
   profile: '/user/:id',
+  saved: '/saved',
 };
 
-const ProtectedRoute = observer(
+export const ProtectedRoute = observer(
   ({
     redirectTo = '/',
     forAuthorized = true,
@@ -32,12 +33,13 @@ const ProtectedRoute = observer(
     ...rest
   }) => {
     const store = useStore();
+    const shouldRedirect = store.auth.isLoggedIn === forAuthorized;
 
     return (
       <Route
         {...rest}
         render={(props) =>
-          store.auth.isLoggedIn === forAuthorized ? (
+          shouldRedirect ? (
             <Component {...props} />
           ) : (
             <Redirect to={redirectTo} />
@@ -73,4 +75,3 @@ function Router() {
 }
 
 export default Router;
-export { ProtectedRoute };

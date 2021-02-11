@@ -100,18 +100,35 @@
 
 .buttonChat {
   color: #FFFFFF;
-  background: #349A89;
+  background: $color_main_primary;
 }
 
 .buttonSave {
   color: #535353;
+
   svg {
     margin-right: 14px;
     width: 17px;
     height: 15px;
+    transition: 0.3s;
 
     @include for-size($md4) {
       margin-right: 7px;
+    }
+  }
+
+  &:not(.active) {
+    svg {
+      color: transparent;
+      stroke: #535353;
+      stroke-width: 1.2px;
+      overflow: visible;
+    }
+  }
+
+  &.active {
+    svg {
+      color: $color_main_primary;
     }
   }
 }

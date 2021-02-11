@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import ReactPlaceholder from 'react-placeholder';
 import {
   TextBlock,
@@ -11,8 +12,11 @@ import { routes } from '../../../scenes/routes';
 import s from './Item.module.scss';
 import { ReactComponent as IconHeart } from '../../../assets/img/icons/heart-filled.svg';
 import Image from '../../Image/Image';
+import { useStore } from '../../../stores/createStore';
 
 function Item({ item, ready = false }) {
+  const { viewer } = useStore();
+
   const itemPlaceholder = (
     <div style={{ paddingBottom: '8px' }}>
       <RectShape
@@ -26,37 +30,47 @@ function Item({ item, ready = false }) {
   return (
     <div className={s.item}>
       <ReactPlaceholder
-        rows={2}
-        showLoadingAnimation
-        firstLaunchOnly
         ready={ready}
         customPlaceholder={itemPlaceholder}
+        showLoadingAnimation
       >
-        <RouterLink
-          to={generatePath(routes.product, { id: item.id })}
-        >
-          <Image
-            src={
-              item.photos && item.photos.length > 0
-                ? item.photos[0]
-                : null
-            }
-            alt={item.title}
-            paddingTop="73%"
-          />
-        </RouterLink>
-        <div className={s.body}>
-          <button
-            className={`${s.button} ${item.saved ? s.active : ''}`}
-          >
-            <IconHeart />
-          </button>
-          <span className={s.title}>{item.title}</span>
-          <span className={s.price}>${item.price}</span>
-        </div>
+        {item && (
+          <>
+            <RouterLink
+              to={generatePath(routes.product, { id: item.id })}
+            >
+              <Image
+                src={
+                  item.photos && item.photos.length > 0
+                    ? item.photos[0]
+                    : null
+                }
+                alt={item.title}
+                paddingTop="73%"
+              />
+            </RouterLink>
+            <div className={s.body}>
+              {viewer?.user?.id !== item.ownerId && (
+                <button
+                  className={`${s.button} ${
+                    item.saved ? s.active : ''
+                  }`}
+                  onClick={() =>
+                    viewer.savedProducts.toggleItem(item)
+                  }
+                  disabled={viewer.savedProducts.isLoading}
+                >
+                  <IconHeart />
+                </button>
+              )}
+              <span className={s.title}>{item.title}</span>
+              <span className={s.price}>${item.price}</span>
+            </div>
+          </>
+        )}
       </ReactPlaceholder>
     </div>
   );
 }
 
-export default Item;
+export default observer(Item);

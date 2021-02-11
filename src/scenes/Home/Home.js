@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import { Switch, Route } from 'react-router-dom';
 import { routes, ProtectedRoute } from '../routes';
 import Header from '../../components/Header/Header';
@@ -7,6 +8,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import EditProfile from '../EditProfile/EditProfile';
 import AddProduct from '../AddProduct/AddProduct';
 import UserProfile from '../UserProfile/UserProfile';
+import SavedProducts from '../SavedProducts/SavedProducts';
 
 function Home() {
   return (
@@ -29,6 +31,11 @@ function Home() {
             component={UserProfile}
             exact
           />
+          <Route
+            path={routes.saved}
+            component={SavedProducts}
+            exact
+          />
           <ProtectedRoute
             path={routes.account}
             redirectTo={routes.login}
@@ -45,4 +52,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default observer(Home);

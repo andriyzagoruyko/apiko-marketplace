@@ -6,7 +6,10 @@
   position: relative;
 
   li{
-    display: block;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
     &:not(:last-child) {
       margin-right: 45px;
   
@@ -27,7 +30,7 @@
   text-transform: uppercase;
 }
 
-.loginButton{
+.buttonLogin{
   display: block;
   font-size: 14px;
   line-height: 31px;
@@ -39,5 +42,27 @@
 
   @include for-size($md5) {
     padding: 0 15px;
+  }
+}
+
+.buttonSaved {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:not(.active) {
+    svg {
+      color: transparent;
+      stroke: #FFFFFF;
+      stroke-width: 1.2px;
+      overflow: visible;
+    }
+  }
+
+  &.active {
+    svg {
+      color: inherit;
+    }
   }
 }

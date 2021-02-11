@@ -14,8 +14,8 @@ function LoginForm(props) {
       <Form {...props}>
         <UpdateAvatar
           name="avatar"
-          hasAvatar={!!avatar}
-          avatar={avatar || fullName}
+          avatar={avatar}
+          fullName={fullName}
         />
         <FormField
           name="fullName"

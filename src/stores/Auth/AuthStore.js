@@ -14,35 +14,38 @@ export const AuthStore = types
       store.isLoggedIn = value;
     },
     logout() {
+      const Root = getRoot(store);
       Api.Auth.logout();
       store.setIsLoggedIn(false);
-      getRoot(store).viewer.setViewer();
+      Root.viewer.savedProducts.cleanItems();
+      Root.viewer.setViewer();
     },
   }));
 
 function loginFlow({ password, email }) {
-  return async (flow) => {
+  return async (flow, store, Root) => {
     const res = await Api.Auth.login({ email, password });
-    const store = getRoot(flow);
 
-    store.viewer.setViewer(res.data.user);
-    store.auth.setIsLoggedIn();
     Api.Auth.setToken(res.data.token);
+    Root.auth.setIsLoggedIn(true);
+    Root.viewer.savedProducts.cleanItems();
+    Root.viewer.setViewer(res.data.user);
+    Root.viewer.savedProducts.fetch.run();
   };
 }
 
 function registerFlow({ fullName, email, password }) {
-  return async (flow) => {
+  return async (flow, store, Root) => {
     const res = await Api.Auth.register({
       fullName,
       email,
       password,
     });
-    const store = getRoot(flow);
 
-    store.viewer.setViewer(res.data.user);
-    store.auth.setIsLoggedIn();
     Api.Auth.setToken(res.data.token);
+    Root.auth.setIsLoggedIn(true);
+    Root.viewer.setViewer(res.data.user);
+    Root.viewer.savedProducts.saveAll.run();
   };
 }
 

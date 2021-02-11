@@ -6,7 +6,9 @@ import { ProductModel } from './ProductModel';
 
 export const OwnProducts = types
   .model('OwnProductsStore', {
-    items: types.array(types.reference(ProductModel)),
+    items: types.array(
+      types.reference(types.late(() => ProductModel)),
+    ),
     count: 0,
     fetch: asyncModel(fetchOwnProducts),
   })

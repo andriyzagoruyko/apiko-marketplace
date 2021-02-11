@@ -84,6 +84,11 @@ export const Products = {
   getById(id) {
     return axios.get(`/api/products/${id}`);
   },
+  getCollectionById(ids) {
+    return axios.get(
+      `/api/products/ids?${ids.map((id) => `id=${id}`).join('&')}`,
+    );
+  },
   async add({ title, description, photos = [], location, price }) {
     return axios.post('api/products', {
       title,
@@ -92,5 +97,19 @@ export const Products = {
       location,
       price,
     });
+  },
+  getSaved() {
+    return axios.get('/api/products/saved');
+  },
+  addToSaved(id) {
+    return axios.post(`/api/products/${id}/saved`);
+  },
+  addCollectionToSaved(ids) {
+    return axios.post('/api/products/saved', {
+      ids,
+    });
+  },
+  removeFromSaved(id) {
+    return axios.delete(`/api/products/${id}/saved`);
   },
 };

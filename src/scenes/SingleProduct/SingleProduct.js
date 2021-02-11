@@ -10,7 +10,6 @@ import Loader from '../../components/Loader/Loader';
 
 function SingleProduct() {
   const params = useParams();
-
   const products = useProductsCollection();
   const users = useUsersCollection();
 
@@ -27,7 +26,7 @@ function SingleProduct() {
     <div className={s.container}>
       <Loader show={products.getSingle.isLoading}>
         <Product product={product} />
-        <Sidebar seller={owner} />
+        <Sidebar seller={owner} product={product} />
       </Loader>
     </div>
   );

@@ -16,7 +16,9 @@ export const RootStore = types
       const token = window.localStorage.getItem('___token');
 
       if (token) {
-        store.viewer.getViewer(token);
+        await store.viewer.getViewer(token);
       }
+
+      store.viewer.savedProducts.fetch.run();
     },
   }));

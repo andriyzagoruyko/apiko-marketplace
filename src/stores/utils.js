@@ -81,6 +81,10 @@ export function createPersist(store) {
         viewer: {
           user: snapshot.viewer.user,
           userModel: snapshot.viewer.userModel,
+          savedProducts: {
+            itemsIds: snapshot.viewer.savedProducts.itemsIds,
+            count: snapshot.viewer.savedProducts.count,
+          },
         },
       }),
     );
