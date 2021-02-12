@@ -1,7 +1,7 @@
-import Api from '../../api';
+import Api from 'src/api';
+import { useStore } from 'src/stores/createStore';
 import { ProductModel } from '../Products/ProductModel';
 import { asyncModel, createCollection } from '../utils';
-import { useStore } from '../../stores/createStore';
 import { Product } from '../schemas';
 
 export const ProductsCollection = createCollection(ProductModel, {

@@ -1,7 +1,7 @@
 import { types } from 'mobx-state-tree';
+import Api from 'src/api';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';
-import Api from '../../api';
 import { LatestProductsCollection } from '../schemas';
 
 export const LatestProductsStore = types

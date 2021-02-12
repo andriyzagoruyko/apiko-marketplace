@@ -1,7 +1,7 @@
 import React from 'react';
+import Avatar from 'src/components/User/Avatar/Avatar';
+import FormUpload from 'src/components/Form/Upload/Upload';
 import s from './UpdateAvatar.module.scss';
-import Avatar from '../../../../components/User/Avatar/Avatar';
-import FormUpload from '../../../../components/Form/Upload/Upload';
 
 function UpdateAvatar({ hasAvatar, name, ...props }) {
   const { avatar, fullName } = props;

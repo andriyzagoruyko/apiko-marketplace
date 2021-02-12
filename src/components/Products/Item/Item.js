@@ -8,15 +8,15 @@ import {
 import 'react-placeholder/lib/reactPlaceholder.css';
 import { generatePath } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
-import { routes } from '../../../scenes/routes';
+import { routes } from 'src/scenes/routes';
+import { ReactComponent as IconHeart } from 'src/assets/img/icons/heart-filled.svg';
+import { useStore } from 'src/stores/createStore';
 import s from './Item.module.scss';
-import { ReactComponent as IconHeart } from '../../../assets/img/icons/heart-filled.svg';
 import Image from '../../Image/Image';
-import { useStore } from '../../../stores/createStore';
 
 function Item({ item, ready = false }) {
   const { viewer } = useStore();
-
+  const link = item && generatePath(routes.product, { id: item.id });
   const itemPlaceholder = (
     <div style={{ paddingBottom: '8px' }}>
       <RectShape
@@ -36,15 +36,9 @@ function Item({ item, ready = false }) {
       >
         {item && (
           <>
-            <RouterLink
-              to={generatePath(routes.product, { id: item.id })}
-            >
+            <RouterLink to={link}>
               <Image
-                src={
-                  item.photos && item.photos.length
-                    ? item.photos[0]
-                    : null
-                }
+                src={!!item.photos?.length && item.photos[0]}
                 alt={item.title}
                 paddingTop="73%"
               />
@@ -63,7 +57,9 @@ function Item({ item, ready = false }) {
                   <IconHeart />
                 </button>
               )}
-              <span className={s.title}>{item.title}</span>
+              <RouterLink className={s.title} to={link}>
+                {item.title}
+              </RouterLink>
               <span className={s.price}>${item.price}</span>
             </div>
           </>

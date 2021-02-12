@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useLocation } from 'react-router';
-import { useStore } from '../../stores/createStore';
-import Products from '../../components/Products/Products';
-import Filter from '../../components/Products/Filter/Filter';
-import useTitle from '../../hooks/useTitle';
-import Loader from '../../components/Loader/Loader';
+import { useStore } from 'src/stores/createStore';
+import Products from 'src/components/Products/Products';
+import Filter from 'src/components/Products/Filter/Filter';
+import useTitle from 'src/hooks/useTitle';
+import Loader from 'src/components/Loader/Loader';
 
 const queryString = require('query-string');
 

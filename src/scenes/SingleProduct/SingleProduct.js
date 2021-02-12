@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
-import { useProductsCollection } from '../../stores/Products/ProductsCollection';
-import { useUsersCollection } from '../../stores/Users/UsersCollection';
+import { useProductsCollection } from 'src/stores/Products/ProductsCollection';
+import { useUsersCollection } from 'src/stores/Users/UsersCollection';
+import Loader from 'src/components/Loader/Loader';
+import useTitle from 'src/hooks/useTitle';
 import s from './SingleProduct.module.scss';
 import Product from './components/Product/Product';
 import Sidebar from './components/Sidebar/Sidebar';
-import Loader from '../../components/Loader/Loader';
-import useTitle from '../../hooks/useTitle';
 
 function SingleProduct() {
   const params = useParams();

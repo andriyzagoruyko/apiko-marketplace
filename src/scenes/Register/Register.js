@@ -2,8 +2,8 @@ import React from 'react';
 import * as Yup from 'yup';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
-import useTitle from '../../hooks/useTitle';
-import { useStore } from '../../stores/createStore';
+import useTitle from 'src/hooks/useTitle';
+import { useStore } from 'src/stores/createStore';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 
 const formProps = {

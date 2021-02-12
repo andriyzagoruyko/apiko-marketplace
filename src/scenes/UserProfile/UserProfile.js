@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { observer } from 'mobx-react';
-import Products from '../../components/Products/Products';
-import useTitle from '../../hooks/useTitle';
-import Loader from '../../components/Loader/Loader';
-import { useUsersCollection } from '../../stores/Users/UsersCollection';
+import Products from 'src/components/Products/Products';
+import useTitle from 'src/hooks/useTitle';
+import Loader from 'src/components/Loader/Loader';
+import UserInfo from 'src/components/User/Info/Info';
+import { useUsersCollection } from 'src/stores/Users/UsersCollection';
 import s from './UserProfile.module.scss';
 import Tabs from './components/Tabs/Tabs';
-import UserInfo from '../../components/User/Info/Info';
 
 function UserProfile() {
   const { id } = useParams();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Switch, Route } from 'react-router-dom';
+import Header from 'src/components/Header/Header';
 import { routes, ProtectedRoute } from '../routes';
-import Header from '../../components/Header/Header';
 import LatestProducts from '../LatestProducts/LatestProducts';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import EditProfile from '../EditProfile/EditProfile';

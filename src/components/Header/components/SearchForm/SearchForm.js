@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { useHistory, useLocation } from 'react-router';
+import { ReactComponent as IconSearch } from 'src/assets/img/icons/search.svg';
+import { ReactComponent as IconLocation } from 'src/assets/img/icons/location.svg';
+import { routes } from 'src/scenes/routes';
 import s from './SearchForm.module.scss';
 import Form from '../../../Form/';
 import Field from '../../../Form/Field/Field';
 import Submit from '../../../Form/Submit/Submit';
-import { ReactComponent as IconSearch } from '../../../../assets/img/icons/search.svg';
-import { ReactComponent as IconLocation } from '../../../../assets/img/icons/location.svg';
-import { routes } from '../../../../scenes/routes';
 
 const queryString = require('query-string');
 

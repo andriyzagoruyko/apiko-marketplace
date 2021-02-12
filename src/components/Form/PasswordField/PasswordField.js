@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { ReactComponent as IconEye } from 'src/assets/img/icons/eye.svg';
 import FormField from '../Field/Field';
-import { ReactComponent as IconEye } from '../../../assets/img/icons/eye.svg';
 import s from './PasswordField.module.scss';
 
 function PasswordField(props) {

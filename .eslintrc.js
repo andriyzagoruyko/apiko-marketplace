@@ -11,6 +11,14 @@ module.exports = {
     'prettier',
     'prettier/react',
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        extensions: ['.js'],
+        map: [['src', './src']],
+      },
+    },
+  },
   globals: { fetch: false },
   plugins: ['react', 'testcafe', 'prettier'],
   env: {
@@ -47,13 +55,16 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/require-default-props': 0,
     'no-unused-expressions': 'error',
-    "react/prop-types": "off",
-    "jsx-a11y/label-has-for": [ 2, {
-      "components": [ "Label" ],
-      "required": {
-          "some": [ "nesting", "id" ]
+    'react/prop-types': 'off',
+    'jsx-a11y/label-has-for': [
+      2,
+      {
+        components: ['Label'],
+        required: {
+          some: ['nesting', 'id'],
+        },
+        allowChildren: false,
       },
-      "allowChildren": false
-  }]
+    ],
   },
 };

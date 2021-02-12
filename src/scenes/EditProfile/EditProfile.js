@@ -2,8 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import * as Yup from 'yup';
-import useTitle from '../../hooks/useTitle';
-import { useStore } from '../../stores/createStore';
+import useTitle from 'src/hooks/useTitle';
+import { useStore } from 'src/stores/createStore';
 import EditProfileForm from './components/EditProfileForm/EditProfileForm';
 import s from './EditProfile.module.scss';
 

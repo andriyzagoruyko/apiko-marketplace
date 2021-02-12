@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactPlaceholder from 'react-placeholder';
 import { RectShape } from 'react-placeholder/lib/placeholders';
-import { ReactComponent as IconLocation } from '../../../../assets/img/icons/location.svg';
+import { ReactComponent as IconLocation } from 'src/assets/img/icons/location.svg';
+import Image from 'src/components/Image/Image';
 import s from './Product.module.scss';
-import Image from '../../../../components/Image/Image';
 
 function Product({ product }) {
   const placeholder = (
@@ -39,11 +39,7 @@ function Product({ product }) {
         <article className={s.product}>
           <div className={s.image}>
             <Image
-              src={
-                product.photos && product.photos.length
-                  ? product.photos[0]
-                  : null
-              }
+              src={!!product.photos?.length && product.photos[0]}
               alt={product.title}
               paddingTop="50%"
             />

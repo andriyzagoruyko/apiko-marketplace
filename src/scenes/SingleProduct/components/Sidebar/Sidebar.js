@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { ReactComponent as IconHeart } from '../../../../assets/img/icons/heart-filled.svg';
-import UserInfo from '../../../../components/User/Info/Info';
+import { ReactComponent as IconHeart } from 'src/assets/img/icons/heart-filled.svg';
+import UserInfo from 'src/components/User/Info/Info';
+import { useStore } from 'src/stores/createStore';
 import s from './Sidebar.module.scss';
-import { useStore } from '../../../../stores/createStore';
 
 function Sidebar({ seller, product }) {
   const { viewer } = useStore();

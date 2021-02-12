@@ -1,9 +1,9 @@
 import React from 'react';
-import Form from '../../../../components/Form/';
-import FormContainer from '../../../../components/Form/Container/Container';
-import FormField from '../../../../components/Form/Field/Field';
-import FormTitle from '../../../../components/Form/Title/Title';
-import FormSubmit from '../../../../components/Form/Submit/Submit';
+import Form from 'src/components/Form/';
+import FormContainer from 'src/components/Form/Container/Container';
+import FormField from 'src/components/Form/Field/Field';
+import FormTitle from 'src/components/Form/Title/Title';
+import FormSubmit from 'src/components/Form/Submit/Submit';
 
 function RestoreForm(props) {
   return (

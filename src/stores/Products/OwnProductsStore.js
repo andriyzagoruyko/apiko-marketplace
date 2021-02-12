@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree';
-import Api from '../../api';
+import Api from 'src/api';
 import { Product } from '../schemas';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';

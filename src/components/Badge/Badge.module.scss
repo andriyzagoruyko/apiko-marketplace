@@ -1,0 +1,21 @@
+@import 'src/varibles.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.count {
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  background: $color_main_primary;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(60%, -60%);
+}

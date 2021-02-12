@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { routes } from '../../../routes';
-import Form from '../../../../components/Form/';
-import FormContainer from '../../../../components/Form/Container/Container';
-import FormField from '../../../../components/Form/Field/Field';
-import FormTitle from '../../../../components/Form/Title/Title';
-import FormSubmit from '../../../../components/Form/Submit/Submit';
-import PasswordField from '../../../../components/Form/PasswordField/PasswordField';
+import { routes } from 'src/scenes/routes';
+import Form from 'src/components/Form/';
+import FormContainer from 'src/components/Form/Container/Container';
+import FormField from 'src/components/Form/Field/Field';
+import FormTitle from 'src/components/Form/Title/Title';
+import FormSubmit from 'src/components/Form/Submit/Submit';
+import PasswordField from 'src/components/Form/PasswordField/PasswordField';
 
 function LoginForm(props) {
   const refreshPassword = (

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
-import useTitle from '../../hooks/useTitle';
+import useTitle from 'src/hooks/useTitle';
 import RestoreForm from './components/RestoreForm/RestoreForm';
 
 const validationSchema = Yup.object().shape({

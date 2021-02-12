@@ -1,5 +1,5 @@
 import { getRoot, types } from 'mobx-state-tree';
-import Api from '../../api';
+import Api from 'src/api';
 import { asyncModel } from '../utils';
 
 export const AuthStore = types

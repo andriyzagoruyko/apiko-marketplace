@@ -1,9 +1,9 @@
 import React from 'react';
+import Form from 'src/components/Form/';
+import Field from 'src/components/Form/Field/Field';
+import Select from 'src/components/Form/Select/Select';
+import { ReactComponent as IconCategory } from 'src/assets/img/icons/category.svg';
 import s from './Filter.module.scss';
-import Form from '../../../components/Form/';
-import Field from '../../../components/Form/Field/Field';
-import Select from '../../../components/Form/Select/Select';
-import { ReactComponent as IconCategory } from '../../../assets/img/icons/category.svg';
 
 function Filter() {
   const categories = [

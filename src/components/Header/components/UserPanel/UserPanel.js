@@ -1,10 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useStore } from '../../../../stores/createStore';
+import { useStore } from 'src/stores/createStore';
+import { ReactComponent as IconHeart } from 'src/assets/img/icons/heart-filled.svg';
+import { routes } from 'src/scenes/routes';
+import Badge from 'src/components/Badge/Badge';
 import s from './UserPanel.module.scss';
-import { ReactComponent as IconHeart } from '../../../../assets/img/icons/heart-filled.svg';
-import { routes } from '../../../../scenes/routes';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 function UserPanel() {
@@ -39,7 +40,9 @@ function UserPanel() {
               viewer.savedProducts.count ? s.active : ''
             }`}
           >
-            <IconHeart />
+            <Badge count={viewer.savedProducts.count}>
+              <IconHeart />
+            </Badge>
           </RouterLink>
         </li>
       </ul>

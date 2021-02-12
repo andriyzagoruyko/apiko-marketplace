@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { ReactComponent as Placeholder } from 'src/assets/img/placeholder.svg';
 import s from './Image.module.scss';
-import { ReactComponent as Placeholder } from '../../assets/img/placeholder.svg';
 
 function Image({ src, paddingTop, ...props }) {
   const [isError, setIsError] = useState(false);

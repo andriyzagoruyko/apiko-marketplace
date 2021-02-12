@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect, useRef } from 'react';
+import { useStore } from 'src/stores/createStore';
+import { routes } from 'src/scenes/routes';
 import { Link as RouterLink } from 'react-router-dom';
 import { generatePath } from 'react-router';
 import { observer } from 'mobx-react';
 import s from './ProfileMenu.module.scss';
-import { useStore } from '../../../../stores/createStore';
-import { routes } from '../../../../scenes/routes';
 import Avatar from '../../../User/Avatar/Avatar';
 
 function ProfileMenu() {

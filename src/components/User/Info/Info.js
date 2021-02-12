@@ -6,7 +6,7 @@ import {
 } from 'react-placeholder/lib/placeholders';
 import { Link as RouterLink } from 'react-router-dom';
 import { generatePath } from 'react-router';
-import { routes } from '../../../scenes/routes';
+import { routes } from 'src/scenes/routes';
 import Avatar from '../Avatar/Avatar';
 import './Info.scss';
 

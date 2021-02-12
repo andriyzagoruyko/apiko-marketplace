@@ -1,7 +1,7 @@
-import Api from '../../api';
+import Api from 'src/api';
+import { useStore } from 'src/stores/createStore';
 import { UserModel } from './UserModel';
 import { asyncModel, createCollection } from '../utils';
-import { useStore } from '../../stores/createStore';
 
 export const UsersCollection = createCollection(UserModel, {
   getUser: asyncModel(getUser),
