@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { ReactComponent as Logo } from 'src/assets/img/logo.svg';
+import { routes, DisableOnRoutes } from 'src/scenes/routes';
 import s from './Header.module.scss';
-import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { routes, DisableOnRoutes } from '../../scenes/routes';
 import UserPanel from './components/UserPanel/UserPanel';
 import SearchFrom from './components/SearchForm/SearchForm';
 
