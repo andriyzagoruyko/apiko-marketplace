@@ -1,9 +1,21 @@
 @import 'src/varibles.scss';
 
 .actions {
-  display: flex;
-  align-items: center;
-  position: relative;
+  &, ul{
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  @include for-size($md5) {
+    padding-top: 5px;
+  }
+
+  ul {
+    @include for-size($md5) {
+      padding-right: 20px;
+    }
+  }
 
   li{
     display: flex;

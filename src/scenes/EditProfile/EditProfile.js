@@ -10,17 +10,19 @@ import s from './EditProfile.module.scss';
 const formProps = {
   validationSchema: Yup.object().shape({
     fullName: Yup.string().required('Name is required'),
-    phone: Yup.string().required('Phone is required'),
-    location: Yup.string().required('Location is required'),
+    phone: Yup.string().required('Phone is required').nullable(),
+    location: Yup.string()
+      .required('Location is required')
+      .nullable(),
   }),
   enableReinitialize: true,
 };
 
 function EditProfile() {
-  useTitle('Edit account');
-
   const store = useStore();
   const history = useHistory();
+
+  useTitle('Edit account');
 
   const handleSubmit = async ({
     fullName,

@@ -11,14 +11,13 @@ function Form({
   ...restProps
 }) {
   return (
-    <>
-      <Loader show={isLoading} withScreenLock={enableScreenLock} />
+    <Loader show={isLoading} withScreenLock={enableScreenLock}>
       <Formik {...restProps}>
         <FForm className={`${s.form} ${horizontal ? s.row : ''}`}>
           {children}
         </FForm>
       </Formik>
-    </>
+    </Loader>
   );
 }
 

@@ -7,20 +7,27 @@ function Products({
   placeholderNum = 12,
   isLoading = false,
   items = [],
+  fallback = 'No products were found',
 }) {
   return (
-    <div className={s.container}>
-      <div className={s.items}>
-        {!items.length || isLoading
-          ? Array.from(Array(placeholderNum)).map((_, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Item key={index} />
-            ))
-          : items.map((item) => (
-              <Item key={item.id} item={item} ready />
-            ))}
-      </div>
-    </div>
+    <>
+      {!items.length && !isLoading ? (
+        <p className="not-found">{fallback}</p>
+      ) : (
+        <div className={s.container}>
+          <div className={s.items}>
+            {items.length
+              ? items.map((item) => (
+                  <Item key={item.id} item={item} ready />
+                ))
+              : Array.from(Array(placeholderNum)).map((_, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Item key={index} />
+                ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

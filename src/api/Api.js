@@ -91,10 +91,10 @@ export const Products = {
   },
   getSearch({ keyword, location }) {
     const query = queryString.stringify({ keyword, location });
-    return axios.get(`api/products/search?${query}`);
+    return axios.get(`/api/products/search?${query}`);
   },
   getLatest() {
-    return axios.get('api/products/latest');
+    return axios.get('/api/products/latest');
   },
   getById(id) {
     return axios.get(`/api/products/${id}`);

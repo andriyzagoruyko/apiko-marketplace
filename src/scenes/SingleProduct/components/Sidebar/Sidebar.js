@@ -8,24 +8,29 @@ import Modal from '../Modal/Modal';
 
 function Sidebar({ seller, product }) {
   const { viewer } = useStore();
+  const [isOpen, setIsOpen] = useState(false);
+
   const disableButtons =
     !product || viewer?.user?.id === product.ownerId;
-
-  const [isOpen, setIsOpen] = useState(false);
 
   function handleClickModal() {
     setIsOpen(!isOpen);
   }
 
+  function handleClickAddToFavorite() {
+    viewer.savedProducts.toggleItem(product);
+  }
+
   return (
     <aside className={s.sidebar}>
-      <Modal
-        user={seller}
-        subject={product?.title}
-        isOpen={isOpen}
-        onClose={handleClickModal}
-      />
       <div className={s.seller}>
+        <Modal
+          user={seller}
+          subject={product?.title}
+          isOpen={isOpen}
+          onClose={handleClickModal}
+          onRequestClose={handleClickModal}
+        />
         <UserInfo user={seller} withLink />
       </div>
 
@@ -42,7 +47,7 @@ function Sidebar({ seller, product }) {
           className={`${s.buttonSave} ${
             product?.saved ? s.active : ''
           }`}
-          onClick={() => viewer.savedProducts.toggleItem(product)}
+          onClick={handleClickAddToFavorite}
         >
           <IconHeart />{' '}
           {!product?.saved

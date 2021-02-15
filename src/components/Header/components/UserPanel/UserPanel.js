@@ -8,12 +8,12 @@ import Badge from 'src/components/Badge/Badge';
 import s from './UserPanel.module.scss';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
-function UserPanel() {
+function UserPanel({ children }) {
   const { auth, viewer } = useStore();
 
   return (
-    <>
-      <ul className={s.actions}>
+    <div className={s.actions}>
+      <ul>
         <li>
           <RouterLink
             to={routes.addProduct}
@@ -46,7 +46,8 @@ function UserPanel() {
           </RouterLink>
         </li>
       </ul>
-    </>
+      {children}
+    </div>
   );
 }
 

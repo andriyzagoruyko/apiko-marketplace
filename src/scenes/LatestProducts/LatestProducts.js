@@ -7,19 +7,19 @@ import useTitle from 'src/hooks/useTitle';
 import Loader from 'src/components/Loader/Loader';
 
 function LatestProducts() {
-  const store = useStore();
-  const { items } = store.latestProducts;
-  const { isLoading } = store.latestProducts.fetch;
+  const { latestProducts } = useStore();
+  const { items } = latestProducts;
+  const { inProcessing } = latestProducts.fetch;
 
   useTitle('Latest products');
   useEffect(() => {
-    store.latestProducts.fetch.run();
+    latestProducts.fetch.run();
   }, []);
 
   return (
-    <Loader show={isLoading}>
+    <Loader show={inProcessing}>
       <Filter />
-      <Products items={items} />
+      <Products items={items} isLoading={inProcessing} />
     </Loader>
   );
 }

@@ -32,6 +32,7 @@ function Field({
             id={name}
             {...field}
             {...props}
+            value={field.value || ''}
           />
         ) : (
           <textarea
@@ -40,6 +41,7 @@ function Field({
             id={name}
             {...field}
             {...props}
+            value={field.value || ''}
           />
         )}
         {Boolean(icon) && (

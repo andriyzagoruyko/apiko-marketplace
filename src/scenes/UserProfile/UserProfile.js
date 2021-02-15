@@ -13,9 +13,7 @@ function UserProfile() {
   const { id } = useParams();
   const collection = useUsersCollection();
   const user = collection.get(id);
-  const isLoading =
-    collection.getUser.isLoading ||
-    (user && user.ownProducts.fetch.isLoading);
+  const isLoading = !user || user.ownProducts.fetch.inProcessing;
 
   useTitle(`Profile ${user ? user.fullName : ''}`);
   useEffect(() => {
@@ -24,7 +22,7 @@ function UserProfile() {
         const fetchedUser = collection.get(id);
         fetchedUser.ownProducts.fetch.run(id);
       });
-    } else if (!user.ownProducts.items.length) {
+    } else if (!user.ownProducts.touched) {
       user.ownProducts.fetch.run(id);
     }
   }, []);
@@ -34,10 +32,11 @@ function UserProfile() {
       <Loader show={isLoading}>
         <div className={s.container}>
           <UserInfo user={user} />
-          <Tabs count={user && user.ownProducts.count} />
+          <Tabs count={user?.ownProducts.count} />
           <Products
-            items={user && user.ownProducts.items}
             placeholderNum={8}
+            items={user?.ownProducts.items}
+            isLoading={isLoading}
           />
         </div>
       </Loader>

@@ -15,16 +15,19 @@ export function asyncModel(thunk, auto = true) {
     .model('AsyncModel', {
       isLoading: false,
       isError: false,
+      touched: false,
       errorCode: types.maybeNull(types.number),
     })
     .actions((store) => ({
       start() {
-        store.isLoading = true;
         store.isError = false;
         store.errorCode = null;
+        store.isLoading = true;
+        store.touched = true;
       },
       success() {
         store.isLoading = false;
+        store.touched = true;
       },
       error(err) {
         store.isLoading = false;
@@ -65,8 +68,12 @@ export function asyncModel(thunk, auto = true) {
         }
         return undefined;
       },
+    }))
+    .views((store) => ({
+      get inProcessing() {
+        return !store.touched || store.isLoading;
+      },
     }));
-
   return types.optional(model, {});
 }
 
